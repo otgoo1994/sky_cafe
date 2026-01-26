@@ -29,9 +29,10 @@ export const routes: CustomRouteObject[] = [
         path: '/',
         title: '홈',
         element: (
-          <PrivateRoute>
-            <HomePage />
-          </PrivateRoute>
+          // <PrivateRoute>
+
+          // </PrivateRoute>
+          <HomePage />
         ),
       },
     ],
