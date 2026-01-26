@@ -1,0 +1,81 @@
+/* ---------------------------- */
+/* Sass modules */
+
+@use './home';
+@use './header';
+@use './colors';
+@use './utils';
+@use './fonts.scss'; /* ---------------------------- */ /* Google Fonts import */
+
+// @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap");
+
+/* ---------------------------- */
+/* Бусад css rules */
+* {
+  font-family: 'GeologicaThin';
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button.button {
+  border: none;
+  @include utils.vw-convert-desktop(border-radius, 5px);
+  @include utils.vw-convert-desktop(padding, 10px 20px);
+  @include utils.vw-convert-desktop(gap, 8px);
+  @include utils.vw-convert-desktop(font-size, 12px);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include utils.mobile {
+    @include utils.vw-convert-mobile(border-radius, 10px);
+    @include utils.vw-convert-mobile(padding, 15px 25px);
+    @include utils.vw-convert-mobile(gap, 8px);
+    @include utils.vw-convert-mobile(font-size, 16px);
+  }
+
+  svg {
+    @include utils.vw-convert-desktop(width, 18px);
+    height: auto;
+
+    @include utils.mobile {
+      @include utils.vw-convert-mobile(width, 18px);
+    }
+  }
+
+  &.warning {
+    background-color: colors.$orange;
+    span {
+      color: colors.$black;
+    }
+  }
+  &.primary {
+    background-color: colors.$white;
+    span {
+      color: colors.$black;
+    }
+  }
+  &.dark {
+    background-color: colors.$dark-blue;
+    span {
+      color: colors.$white;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+}
+
+.col-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.container {
+  width: 70%;
+  margin: auto;
+}

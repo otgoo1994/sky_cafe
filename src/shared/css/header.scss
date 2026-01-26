@@ -1,0 +1,93 @@
+@use './utils';
+@use './colors';
+
+.header {
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+
+  .header-body {
+    display: flex;
+    justify-content: space-between;
+    background-color: colors.$blue;
+    @include utils.vw-convert-desktop(padding, 0px 15px);
+    @include utils.vw-convert-desktop(height, 70px);
+
+    @include utils.mobile {
+      @include utils.vw-convert-mobile(padding, 0px 15px);
+      @include utils.vw-convert-mobile(height, 70px);
+    }
+
+    &-content {
+      display: flex;
+      align-items: center;
+
+      ul {
+        list-style: none;
+        display: flex;
+        @include utils.vw-convert-desktop(gap, 15px);
+        @include utils.vw-convert-desktop(font-size, 14px);
+        color: colors.$white;
+        font-weight: 600;
+
+        @include utils.mobile {
+          display: none;
+        }
+
+        p {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          @include utils.vw-convert-desktop(gap, 3px);
+
+          svg {
+            @include utils.vw-convert-desktop(width, 18px);
+            height: auto;
+          }
+        }
+      }
+    }
+
+    .logo {
+      height: 80%;
+      width: auto;
+    }
+  }
+
+  &-bar {
+    display: flex;
+    justify-content: space-between;
+    @include utils.vw-convert-desktop(padding, 10px 15px);
+    @include utils.vw-convert-desktop(font-size, 14px);
+    background-color: colors.$dark-blue;
+
+    @include utils.mobile {
+      @include utils.vw-convert-mobile(padding, 10px 15px);
+      @include utils.vw-convert-mobile(font-size, 14px);
+    }
+
+    .title {
+      color: colors.$white;
+      span {
+        color: colors.$orange;
+      }
+    }
+    .icons {
+      display: flex;
+      @include utils.vw-convert-desktop(gap, 10px);
+
+      @include utils.mobile {
+        @include utils.vw-convert-mobile(gap, 10px);
+      }
+
+      svg {
+        @include utils.vw-convert-desktop(width, 20px);
+        height: auto;
+
+        @include utils.mobile {
+          @include utils.vw-convert-mobile(width, 20px);
+        }
+      }
+    }
+  }
+}

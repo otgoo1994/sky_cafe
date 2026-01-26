@@ -1,0 +1,815 @@
+@use './utils';
+@use './colors';
+@use './fonts.scss';
+
+section.section {
+  height: 100vh;
+  position: relative;
+
+  @include utils.mobile {
+    overflow-x: hidden;
+  }
+
+  &.home-slider {
+    .swiper {
+      height: 100%;
+
+      &-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .slider-content {
+          width: 70%;
+          .text {
+            .sub-title {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              @include utils.vw-convert-desktop(gap, 10px);
+              @include utils.vw-convert-desktop(font-size, 20px);
+              color: colors.$white;
+
+              @include utils.mobile {
+                @include utils.vw-convert-mobile(gap, 10px);
+                @include utils.vw-convert-mobile(font-size, 20px);
+              }
+
+              .line {
+                @include utils.vw-convert-desktop(height, 2px);
+                @include utils.vw-convert-desktop(width, 30px);
+                background-color: orange;
+
+                @include utils.mobile {
+                  @include utils.vw-convert-mobile(height, 2px);
+                  @include utils.vw-convert-mobile(width, 30px);
+                }
+              }
+
+              .icon {
+                @include utils.vw-convert-desktop(width, 50px);
+                height: auto;
+
+                @include utils.mobile {
+                  @include utils.vw-convert-mobile(width, 50px);
+                }
+              }
+            }
+
+            .title {
+              text-transform: uppercase;
+              font-weight: 500;
+              color: colors.$white;
+              font-family: 'RubikMedium';
+              @include utils.vw-convert-desktop(font-size, 120px);
+
+              @include utils.mobile {
+                @include utils.vw-convert-mobile(font-size, 120px);
+              }
+            }
+
+            .description {
+              @include utils.vw-convert-desktop(font-size, 18px);
+              color: colors.$white;
+              font-weight: 100;
+              font-family: 'GeologicaLight';
+
+              @include utils.mobile {
+                @include utils.vw-convert-mobile(font-size, 18px);
+              }
+            }
+
+            .button-container {
+              display: flex;
+              @include utils.vw-convert-desktop(gap, 10px);
+              @include utils.vw-convert-desktop(margin-top, 20px);
+
+              @include utils.mobile {
+                @include utils.vw-convert-mobile(gap, 10px);
+                @include utils.vw-convert-mobile(margin-top, 20px);
+              }
+            }
+          }
+
+          .image {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            img {
+              position: absolute;
+              right: 0;
+              top: 0;
+              width: 125%;
+              transform: translateX(20%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .background-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include utils.vw-convert-desktop(gap, 30px);
+    height: 100%;
+
+    @include utils.mobile {
+      @include utils.vw-convert-mobile(gap, 30px);
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include utils.vw-convert-desktop(gap, 10px);
+
+      .sub-title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        @include utils.vw-convert-desktop(gap, 10px);
+        @include utils.vw-convert-desktop(font-size, 20px);
+        color: colors.$white;
+
+        @include utils.mobile {
+          @include utils.vw-convert-mobile(gap, 10px);
+          @include utils.vw-convert-mobile(font-size, 20px);
+        }
+
+        .line {
+          @include utils.vw-convert-desktop(height, 2px);
+          @include utils.vw-convert-desktop(width, 30px);
+          background-color: orange;
+
+          @include utils.mobile {
+            @include utils.vw-convert-mobile(height, 2px);
+            @include utils.vw-convert-mobile(width, 30px);
+          }
+        }
+      }
+
+      .title {
+        text-transform: uppercase;
+        font-weight: 500;
+        color: colors.$white;
+        font-family: 'RubikMedium';
+        @include utils.vw-convert-desktop(font-size, 32px);
+
+        @include utils.mobile {
+          @include utils.vw-convert-mobile(font-size, 32px);
+        }
+      }
+
+      .description {
+        @include utils.vw-convert-desktop(font-size, 16px);
+        color: colors.$white;
+        font-weight: 100;
+        font-family: 'GeologicaLight';
+        text-align: justify;
+
+        @include utils.mobile {
+          @include utils.vw-convert-mobile(font-size, 16px);
+        }
+      }
+
+      .quotes {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        background-color: colors.$orange;
+        width: 80%;
+        @include utils.vw-convert-desktop(padding, 15px 20px);
+        @include utils.vw-convert-desktop(margin-top, 100px);
+        @include utils.vw-convert-desktop(border-radius, 10px);
+
+        @include utils.mobile {
+          @include utils.vw-convert-mobile(padding, 15px 20px);
+          @include utils.vw-convert-mobile(margin-top, 100px);
+          @include utils.vw-convert-mobile(border-radius, 10px);
+        }
+
+        div {
+          width: 100%;
+          position: relative;
+
+          img {
+            // @include utils.vw-convert-desktop(width, 100px);
+            width: 80%;
+            aspect-ratio: 1;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+
+        span {
+          font-weight: bold;
+          @include utils.vw-convert-desktop(font-size, 25px);
+
+          @include utils.mobile {
+            @include utils.vw-convert-mobile(font-size, 25px);
+          }
+        }
+      }
+    }
+
+    .img-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .image {
+        width: 80%;
+      }
+    }
+  }
+
+  &.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .menu-swiper-container {
+      width: 70%;
+
+      @include utils.mobile {
+        width: 100%;
+
+        .swiper {
+          @include utils.vw-convert-mobile(padding-left, 50px);
+          @include utils.vw-convert-mobile(padding-right, 20px);
+
+          .swiper-slide {
+            width: 70%;
+          }
+        }
+      }
+
+      .card-container {
+        width: 100%;
+
+        @include utils.mobile {
+          width: 100%;
+        }
+
+        .menu-card {
+          background-color: colors.$white;
+          @include utils.vw-convert-desktop(border-radius, 20px);
+          @include utils.vw-convert-desktop(padding, 160px 0 20px 0);
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+
+          @include utils.mobile {
+            @include utils.vw-convert-mobile(border-radius, 50px);
+            @include utils.vw-convert-mobile(padding, 280px 0 30px 0);
+          }
+
+          img {
+            width: 80%;
+            position: absolute;
+            top: 0;
+            transform: translateY(-30%);
+          }
+
+          .name {
+            @include utils.vw-convert-desktop(font-size, 24px);
+            @include utils.vw-convert-desktop(margin-top, 40px);
+            font-family: 'GeologicaSemibold';
+            color: colors.$blue;
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(font-size, 40px);
+              @include utils.vw-convert-mobile(margin-top, 20px);
+            }
+          }
+
+          .ingredients {
+            @include utils.vw-convert-desktop(font-size, 15px);
+            font-weight: 400;
+            font-family: 'GeologicaRegular';
+            color: colors.$grey;
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(font-size, 25px);
+            }
+          }
+
+          .price {
+            font-family: 'GeologicaSemibold';
+            color: colors.$blue;
+            @include utils.vw-convert-desktop(font-size, 24px);
+            @include utils.vw-convert-desktop(margin-top, 10px);
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(margin-top, 10px);
+              @include utils.vw-convert-mobile(font-size, 40px);
+            }
+          }
+
+          .button {
+            width: 80%;
+            @include utils.vw-convert-desktop(margin-top, 10px);
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(margin-top, 10px);
+            }
+          }
+        }
+      }
+    }
+
+    .swiper-wrapper {
+      @include utils.vw-convert-desktop(padding, 80px 0 50px 0);
+
+      @include utils.mobile {
+        @include utils.vw-convert-mobile(padding, 150px 0 100px 0);
+      }
+    }
+
+    .swiper-pagination {
+      .swiper-pagination-bullet {
+        @include utils.vw-convert-desktop(width, 10px);
+        @include utils.vw-convert-desktop(height, 10px);
+        background: #fff;
+        opacity: 0.5;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        margin: 0 6px !important;
+
+        @include utils.mobile {
+          @include utils.vw-convert-mobile(width, 10px);
+          @include utils.vw-convert-mobile(height, 10px);
+        }
+      }
+
+      .swiper-pagination-bullet-active {
+        @include utils.vw-convert-desktop(width, 30px);
+        @include utils.vw-convert-desktop(height, 10px);
+        background: #ffcc00;
+        opacity: 1;
+        border-radius: 999px;
+
+        @include utils.mobile {
+          @include utils.vw-convert-mobile(width, 30px);
+          @include utils.vw-convert-mobile(height, 10px);
+        }
+      }
+    }
+  }
+}
+
+.main-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include utils.vw-convert-desktop(gap, 10px);
+  @include utils.vw-convert-desktop(font-size, 25px);
+  color: colors.$white;
+  z-index: 2;
+
+  @include utils.mobile {
+    @include utils.vw-convert-mobile(gap, 10px);
+    @include utils.vw-convert-mobile(font-size, 25px);
+  }
+
+  .line {
+    @include utils.vw-convert-desktop(height, 2px);
+    @include utils.vw-convert-desktop(width, 35px);
+    background-color: orange;
+
+    @include utils.mobile {
+      @include utils.vw-convert-mobile(height, 2px);
+      @include utils.vw-convert-mobile(width, 35px);
+    }
+  }
+}
+
+.main-menu {
+  list-style: none;
+  display: flex;
+  z-index: 2;
+  @include utils.vw-convert-desktop(gap, 30px);
+  @include utils.vw-convert-desktop(font-size, 25px);
+  @include utils.vw-convert-desktop(margin, 30px 0);
+
+  @include utils.mobile {
+    @include utils.vw-convert-mobile(gap, 30px);
+    @include utils.vw-convert-mobile(font-size, 25px);
+    @include utils.vw-convert-mobile(margin, 50px 0);
+    @include utils.vw-convert-mobile(padding, 0 30px);
+    width: 90%;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    overflow-x: auto;
+  }
+
+  li {
+    color: colors.$white;
+    border: transparent solid colors.$orange;
+    cursor: pointer;
+    @include utils.vw-convert-desktop(padding, 10px 20px);
+    @include utils.vw-convert-desktop(border-radius, 20px);
+
+    @include utils.mobile {
+      @include utils.vw-convert-mobile(padding, 10px 20px);
+      @include utils.vw-convert-mobile(border-radius, 20px);
+      white-space: nowrap;
+    }
+
+    &[data-type='true'] {
+      color: colors.$orange;
+      border: 1px solid colors.$orange;
+      @include utils.vw-convert-desktop(padding, 10px 20px);
+
+      @include utils.mobile {
+        @include utils.vw-convert-mobile(padding, 10px 20px);
+      }
+    }
+  }
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .swiper {
+    // @include utils.vw-convert-desktop(padding-left, 200px);
+    height: 100%;
+    padding-left: 10%;
+    padding-right: 5%;
+
+    .swiper-slide {
+      width: 23%;
+      align-items: center;
+      display: flex;
+
+      @include utils.mobile {
+        width: 80%;
+      }
+
+      &.slide-up {
+        transform: translateY(-5%);
+      }
+
+      &.slide-down {
+        transform: translateY(5%);
+      }
+
+      .img-wrapper {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+
+        &:hover {
+          .shadow {
+            display: block;
+          }
+
+          .overlay {
+            display: flex;
+          }
+        }
+
+        img {
+          width: 100%;
+          @include utils.vw-convert-desktop(height, 500px);
+          object-fit: cover;
+
+          @include utils.mobile {
+            // @include utils.vw-convert-mobile(height, 800px);
+            aspect-ratio: 1/1.5;
+          }
+        }
+
+        .shadow {
+          background-color: colors.$dark-blue;
+          opacity: 0.5;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          display: none;
+        }
+
+        .overlay {
+          position: absolute;
+          left: 0;
+          top: 0;
+          display: none;
+          width: 100%;
+          height: 100%;
+
+          justify-content: center;
+          align-items: center;
+          z-index: 2;
+
+          &-border {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: colors.$orange;
+            width: calc(100% - 30px);
+            height: calc(100% - 30px);
+            border: 2px solid colors.$orange;
+            font-weight: 700;
+            @include utils.vw-convert-desktop(font-size, 20px);
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(font-size, 20px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &-item {
+    flex-grow: 1;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    position: relative;
+    flex-direction: column;
+
+    @include utils.mobile {
+      height: auto;
+    }
+
+    .airplane {
+      width: 50%;
+      height: auto;
+
+      @include utils.mobile {
+        width: 80%;
+      }
+    }
+
+    .background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .description {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-43%, -90%);
+
+      @include utils.mobile {
+        width: 70%;
+        transform: translate(-30%, -110%);
+      }
+
+      .sub-title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        @include utils.vw-convert-desktop(gap, 10px);
+        @include utils.vw-convert-desktop(font-size, 20px);
+        color: colors.$white;
+
+        @include utils.mobile {
+          @include utils.vw-convert-mobile(gap, 10px);
+          @include utils.vw-convert-mobile(font-size, 20px);
+          @include utils.vw-convert-mobile(margin-bottom, 5px);
+        }
+
+        .line {
+          @include utils.vw-convert-desktop(height, 2px);
+          @include utils.vw-convert-desktop(width, 30px);
+          background-color: orange;
+
+          @include utils.mobile {
+            @include utils.vw-convert-mobile(height, 2px);
+            @include utils.vw-convert-mobile(width, 30px);
+          }
+        }
+
+        .icon {
+          @include utils.vw-convert-desktop(width, 50px);
+          height: auto;
+
+          @include utils.mobile {
+            @include utils.vw-convert-mobile(width, 50px);
+          }
+        }
+      }
+
+      .button-container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: flex-end;
+
+        @include utils.mobile {
+          justify-content: flex-start;
+        }
+
+        .title {
+          text-transform: uppercase;
+          font-weight: 500;
+          color: colors.$white;
+          font-family: 'RubikMedium';
+          @include utils.vw-convert-desktop(font-size, 100px);
+
+          @include utils.mobile {
+            @include utils.vw-convert-mobile(font-size, 40px);
+          }
+        }
+
+        .button {
+          @include utils.vw-convert-desktop(margin-bottom, 30px);
+
+          @include utils.mobile {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    &-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      z-index: 2;
+      width: 70%;
+
+      &:last-child {
+        justify-self: end;
+      }
+
+      @include utils.mobile {
+        width: 90%;
+        grid-template-columns: 1fr;
+      }
+
+      .logo {
+        width: 100%;
+        height: auto;
+      }
+
+      ul {
+        color: colors.$white;
+        list-style: none;
+
+        @include utils.mobile {
+          margin: 0;
+          @include utils.vw-convert-mobile(padding-left, 40px);
+        }
+
+        li {
+          @include utils.vw-convert-desktop(margin-bottom, 10px);
+          position: relative;
+
+          @include utils.mobile {
+            @include utils.vw-convert-mobile(margin-bottom, 10px);
+          }
+
+          &:first-child {
+            font-weight: 600;
+            @include utils.vw-convert-desktop(font-size, 25px);
+            @include utils.vw-convert-desktop(margin-bottom, 20px);
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(font-size, 30px);
+              @include utils.vw-convert-mobile(margin-bottom, 20px);
+            }
+          }
+
+          &:not(:first-child) {
+            @include utils.vw-convert-desktop(font-size, 15px);
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(font-size, 20px);
+            }
+          }
+
+          span {
+            color: colors.$orange;
+          }
+        }
+
+        &.schedule {
+          li {
+            padding: 0;
+            @include utils.vw-convert-desktop(padding-left, 20px);
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(padding-left, 20px);
+            }
+
+            &:not(:first-child) {
+              &::before {
+                content: '•';
+                position: absolute;
+                top: 0;
+                left: 0;
+                @include utils.vw-convert-desktop(font-size, 20px);
+                line-height: 1;
+
+                @include utils.mobile {
+                  @include utils.vw-convert-mobile(font-size, 30px);
+                }
+              }
+            }
+          }
+        }
+
+        &.contact-info {
+          li {
+            display: flex;
+            @include utils.vw-convert-desktop(gap, 10px);
+            align-items: center;
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(gap, 10px);
+            }
+
+            svg {
+              @include utils.vw-convert-desktop(width, 35px);
+              @include utils.vw-convert-desktop(height, 35px);
+
+              @include utils.mobile {
+                @include utils.vw-convert-mobile(width, 35px);
+                @include utils.vw-convert-mobile(height, 35px);
+              }
+            }
+          }
+        }
+      }
+
+      img.set {
+        width: 70%;
+
+        @include utils.mobile {
+          width: 70%;
+          @include utils.vw-convert-mobile(padding-left, 40px);
+        }
+      }
+    }
+
+    .copyright {
+      z-index: 2;
+      color: colors.$grey;
+      font-weight: 600;
+      width: 80%;
+      border-top: solid colors.$white;
+      @include utils.vw-convert-desktop(border-width, 1px);
+      @include utils.vw-convert-desktop(margin-top, 35px);
+      @include utils.vw-convert-desktop(padding-top, 35px);
+      @include utils.vw-convert-desktop(font-size, 15px);
+      text-align: center;
+
+      @include utils.mobile {
+        @include utils.vw-convert-mobile(border-width, 1px);
+        @include utils.vw-convert-mobile(margin-top, 35px);
+        @include utils.vw-convert-mobile(padding-top, 35px);
+        @include utils.vw-convert-mobile(font-size, 15px);
+      }
+    }
+  }
+}
+
+.dimmed {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: colors.$dark-blue;
+  opacity: 0.7;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
