@@ -11,10 +11,19 @@ export const Gallery = () => {
     { src: '/images/gallery_4.png', title: 'FOOD GALLERY' },
     { src: '/images/gallery_2.png', title: 'FOOD GALLERY' },
     { src: '/images/gallery_3.png', title: 'FOOD GALLERY' },
+    { src: '/images/gallery_3.png', title: 'FOOD GALLERY' },
   ];
   return (
-    <section className="section gallery">
+    <section className="section gallery h-full">
       <img src="/images/gallery_bg.png" alt="" className="background-image" />
+      <div className="food-grid">
+        {images.map((item, i) => (
+          <div className={`item ${i == 0 && 'item1'} ${i == 2 && 'tall'}`} key={`flex-item-${i}`}>
+            <img src={item.src} />
+          </div>
+        ))}
+      </div>
+
       <Swiper
         slidesPerView="auto"
         breakpoints={{

@@ -65,6 +65,13 @@ button.button {
       color: colors.$white;
     }
   }
+
+  &.light {
+    background-color: colors.$light-blue;
+    span {
+      color: colors.$white;
+    }
+  }
 }
 
 .grid {
@@ -73,9 +80,23 @@ button.button {
 
 .col-2 {
   grid-template-columns: 1fr 1fr;
+
+  @include utils.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.h-full {
+  height: 100vh !important;
 }
 
 .container {
   width: 70%;
   margin: auto;
+}
+
+.only-desktop {
+  @include utils.mobile {
+    display: none;
+  }
 }

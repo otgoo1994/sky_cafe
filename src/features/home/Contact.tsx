@@ -21,7 +21,7 @@ export const Contact = () => {
   return (
     <section className="section contact">
       <img src="/images/sky.png" alt="" className="background-image" />
-      {/* <div className="dimmed" /> */}
+      <div className="dimmed" />
 
       <div className="contact-item">
         <div className="description">

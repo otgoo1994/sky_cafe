@@ -8,7 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  variant: 'primary' | 'warning' | 'dark';
+  variant: 'primary' | 'warning' | 'dark' | 'light';
 }
 
 export const ComButton = ({
@@ -25,7 +25,7 @@ export const ComButton = ({
     <button
       type={type ?? 'button'}
       id={btnId}
-      className={`button ${variant === 'warning' && 'warning'} ${variant === 'primary' && 'primary'} ${variant === 'dark' && 'dark'}`}
+      className={`button ${variant === 'warning' && 'warning'} ${variant === 'primary' && 'primary'} ${variant === 'dark' && 'dark'} ${variant === 'light' && 'light'}`}
       {...props}
     >
       {leftIcon && leftIcon}

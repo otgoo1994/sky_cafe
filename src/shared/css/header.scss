@@ -14,13 +14,24 @@
     @include utils.vw-convert-desktop(height, 70px);
 
     @include utils.mobile {
-      @include utils.vw-convert-mobile(padding, 0px 15px);
-      @include utils.vw-convert-mobile(height, 70px);
+      @include utils.vw-convert-mobile(padding, 20px 15px);
+      // @include utils.vw-convert-mobile(height, 70px);
+      background-color: transparent;
     }
 
     &-content {
       display: flex;
       align-items: center;
+
+      @include utils.mobile {
+        width: 100%;
+        justify-content: center;
+
+        &.menu-desktop,
+        &.cart {
+          display: none;
+        }
+      }
 
       ul {
         list-style: none;
@@ -29,10 +40,6 @@
         @include utils.vw-convert-desktop(font-size, 14px);
         color: colors.$white;
         font-weight: 600;
-
-        @include utils.mobile {
-          display: none;
-        }
 
         p {
           display: flex;
@@ -51,6 +58,10 @@
     .logo {
       height: 80%;
       width: auto;
+      @include utils.mobile {
+        width: 50%;
+        height: auto;
+      }
     }
   }
 
@@ -62,8 +73,7 @@
     background-color: colors.$dark-blue;
 
     @include utils.mobile {
-      @include utils.vw-convert-mobile(padding, 10px 15px);
-      @include utils.vw-convert-mobile(font-size, 14px);
+      display: none;
     }
 
     .title {

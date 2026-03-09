@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ComButton } from '~/shared/ui/';
-import { IconGardenCart } from '@tabler/icons-react';
+import { IconGardenCart, IconStarFilled } from '@tabler/icons-react';
 import { Pagination } from 'swiper/modules';
 import { useState } from 'react';
+import Rating from '@mui/material/Rating';
 
 export const Menu = () => {
   const [active, setActive] = useState<string>('economy');
@@ -30,6 +31,115 @@ export const Menu = () => {
           SALAD
         </li>
       </ul>
+
+      <div className="menu-mobile">
+        <div className="menu-mobile-container">
+          <div className="item-container">
+            <div className="item">
+              <div className="item-image">
+                <img src="/images/set_1.png" alt="" className="" />
+              </div>
+              <div className="item-info">
+                <p className="name">FOOD NAME</p>
+                <p className="ingredients">dish ingredients</p>
+                <p className="price">25,000₮</p>
+                <ComButton
+                  label="Сагсанд нэмэх"
+                  variant="light"
+                  leftIcon={<IconGardenCart color="#FFFFFF" />}
+                />
+              </div>
+            </div>
+            <div className="rating">
+              <Rating
+                defaultValue={4}
+                icon={<IconStarFilled style={{ color: '#1075ff' }} />}
+                emptyIcon={<IconStarFilled style={{ color: '#FFFFFF' }} />}
+                readOnly
+              />
+              (30 Reviews)
+            </div>
+          </div>
+          <div className="item-container">
+            <div className="item">
+              <div className="item-image">
+                <img src="/images/set_1.png" alt="" className="" />
+              </div>
+              <div className="item-info">
+                <p className="name">FOOD NAME</p>
+                <p className="ingredients">dish ingredients</p>
+                <p className="price">25,000₮</p>
+                <ComButton
+                  label="Сагсанд нэмэх"
+                  variant="light"
+                  leftIcon={<IconGardenCart color="#FFFFFF" />}
+                />
+              </div>
+            </div>
+            <div className="rating">
+              <Rating
+                defaultValue={4}
+                icon={<IconStarFilled style={{ color: '#1075ff' }} />}
+                emptyIcon={<IconStarFilled style={{ color: '#FFFFFF' }} />}
+                readOnly
+              />
+              (30 Reviews)
+            </div>
+          </div>
+          <div className="item-container">
+            <div className="item">
+              <div className="item-image">
+                <img src="/images/set_1.png" alt="" className="" />
+              </div>
+              <div className="item-info">
+                <p className="name">FOOD NAME</p>
+                <p className="ingredients">dish ingredients</p>
+                <p className="price">25,000₮</p>
+                <ComButton
+                  label="Сагсанд нэмэх"
+                  variant="light"
+                  leftIcon={<IconGardenCart color="#FFFFFF" />}
+                />
+              </div>
+            </div>
+            <div className="rating">
+              <Rating
+                defaultValue={4}
+                icon={<IconStarFilled style={{ color: '#1075ff' }} />}
+                emptyIcon={<IconStarFilled style={{ color: '#FFFFFF' }} />}
+                readOnly
+              />
+              (30 Reviews)
+            </div>
+          </div>
+          <div className="item-container">
+            <div className="item">
+              <div className="item-image">
+                <img src="/images/set_1.png" alt="" className="" />
+              </div>
+              <div className="item-info">
+                <p className="name">FOOD NAME</p>
+                <p className="ingredients">dish ingredients</p>
+                <p className="price">25,000₮</p>
+                <ComButton
+                  label="Сагсанд нэмэх"
+                  variant="light"
+                  leftIcon={<IconGardenCart color="#FFFFFF" />}
+                />
+              </div>
+            </div>
+            <div className="rating">
+              <Rating
+                defaultValue={4}
+                icon={<IconStarFilled style={{ color: '#1075ff' }} />}
+                emptyIcon={<IconStarFilled style={{ color: '#FFFFFF' }} />}
+                readOnly
+              />
+              (30 Reviews)
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="menu-swiper-container">
         <Swiper

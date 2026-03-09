@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 export const About = () => {
   return (
-    <section className="section">
+    <section className="section only-desktop">
       <img src="/images/bg_flower.png" alt="" className="background-image" />
       <div className="container about">
         <div className="text">

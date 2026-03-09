@@ -28,7 +28,7 @@ export const Header = () => {
         <div className="header-body-content">
           <img src="/images/logo.png" alt="" className="logo" />
         </div>
-        <div className="header-body-content">
+        <div className="header-body-content menu-desktop">
           <ul>
             <li>
               <p>
@@ -52,7 +52,7 @@ export const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="header-body-content">
+        <div className="header-body-content cart">
           <ComButton
             label="Сагс харах"
             variant="warning"

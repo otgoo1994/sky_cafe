@@ -5,11 +5,18 @@ import { IconGardenCart, IconChevronRight } from '@tabler/icons-react';
 
 export const HomeSlider = () => {
   return (
-    <section className="section home-slider">
+    <section className="section home-slider h-full">
       <Swiper spaceBetween={0} slidesPerView={1}>
         <SwiperSlide>
           <img src="/images/bg_blue.png" alt="" className="background-image" />
           <div className="grid col-2 slider-content">
+            <div className="image mobile">
+              <div className="mobile-container">
+                <img src="/images/OB.png" alt="icon" />
+                <p className="image-title top">Нислэгийн амтыг таны гарт</p>
+                <p className="image-title bottom">Нисэх мэт шуурхай хүргэлт</p>
+              </div>
+            </div>
             <div className="text">
               <div className="sub-title">
                 <div className="line" /> НИСЛЭГИЙН АМТ{' '}
@@ -37,6 +44,13 @@ export const HomeSlider = () => {
         <SwiperSlide>
           <img src="/images/bg_blue.png" alt="" className="background-image" />
           <div className="grid col-2 slider-content">
+            <div className="image mobile">
+              <div className="mobile-container">
+                <img src="/images/OB.png" alt="icon" />
+                <p className="image-title top">Нислэгийн амтыг таны гарт</p>
+                <p className="image-title bottom">Нисэх мэт шуурхай хүргэлт</p>
+              </div>
+            </div>
             <div className="text">
               <div className="sub-title">
                 <div className="line" /> НИСЛЭГИЙН АМТ{' '}
