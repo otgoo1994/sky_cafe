@@ -17,7 +17,7 @@ export const About = () => {
 
     ScrollTrigger.create({
       trigger: cardRef.current,
-      start: 'top 80%',
+      start: 'top 90%',
       onEnter: () => {
         gsap.fromTo(textRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });
         gsap.fromTo(imgRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });

@@ -29,7 +29,7 @@ export const Gallery = () => {
 
     ScrollTrigger.create({
       trigger: cardRef.current,
-      start: isMobile ? 'top bottom' : 'top 80%',
+      start: isMobile ? 'top bottom' : 'top 90%',
       onEnter: () => {
         gsap.fromTo(swiperRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });
         gsap.fromTo(flexRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });

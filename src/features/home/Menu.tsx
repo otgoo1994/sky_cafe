@@ -28,7 +28,7 @@ export const Menu = () => {
 
     ScrollTrigger.create({
       trigger: cardRef.current,
-      start: isMobile ? 'top bottom' : 'top 80%',
+      start: isMobile ? 'top bottom' : 'top 90%',
       onEnter: () => {
         gsap.fromTo(titleRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });
         gsap.fromTo(categoryRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });
