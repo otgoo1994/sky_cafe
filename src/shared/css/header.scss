@@ -22,6 +22,7 @@
     &-content {
       display: flex;
       align-items: center;
+      position: relative;
 
       @include utils.mobile {
         width: 100%;
@@ -64,6 +65,28 @@
         height: auto;
       }
     }
+
+    .mobile-menu-button {
+      display: none;
+
+      @include utils.mobile {
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        aspect-ratio: 1;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        svg {
+          color: colors.$white;
+          width: 40%;
+          height: 40%;
+        }
+      }
+    }
   }
 
   &-bar {
@@ -98,6 +121,81 @@
         @include utils.mobile {
           @include utils.vw-convert-mobile(width, 20px);
         }
+      }
+    }
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: colors.$bg-blue;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    @include utils.vw-convert-mobile(padding, 20px 15px);
+
+    .logo {
+      width: 50%;
+      height: auto;
+    }
+
+    .mobile-menu-button {
+      display: none;
+
+      @include utils.mobile {
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        aspect-ratio: 1;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        svg {
+          color: colors.$white;
+          width: 40%;
+          height: 40%;
+        }
+      }
+    }
+  }
+
+  &-list {
+    display: flex;
+    @include utils.vw-convert-mobile(margin-top, 40px);
+
+    justify-content: center;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      @include utils.vw-convert-mobile(gap, 20px);
+
+      li {
+        text-align: center;
+        color: colors.$white;
+        font-weight: 600;
+        cursor: pointer;
       }
     }
   }
