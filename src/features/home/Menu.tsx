@@ -42,6 +42,15 @@ export const Menu = () => {
     });
   }, []);
 
+  const handleMenu = (menu: string, e: React.MouseEvent<HTMLLIElement>) => {
+    setActive(menu);
+    e.currentTarget.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center',
+    });
+  };
+
   return (
     <section className="section menu" ref={cardRef}>
       <img src="/images/menu_bg.png" alt="" className="background-image" />
@@ -52,16 +61,28 @@ export const Menu = () => {
       </div>
 
       <ul className="main-menu" ref={categoryRef}>
-        <li onClick={() => setActive('economy')} data-type={active == 'economy'}>
+        <li
+          onClick={(e: React.MouseEvent<HTMLLIElement>) => handleMenu('economy', e)}
+          data-type={active == 'economy'}
+        >
           ECONOMY CLASS
         </li>
-        <li onClick={() => setActive('business')} data-type={active == 'business'}>
+        <li
+          onClick={(e: React.MouseEvent<HTMLLIElement>) => handleMenu('business', e)}
+          data-type={active == 'business'}
+        >
           BUSINESS CLASS
         </li>
-        <li onClick={() => setActive('breakfast')} data-type={active == 'breakfast'}>
+        <li
+          onClick={(e: React.MouseEvent<HTMLLIElement>) => handleMenu('breakfast', e)}
+          data-type={active == 'breakfast'}
+        >
           BREAKFAST
         </li>
-        <li onClick={() => setActive('salad')} data-type={active == 'salad'}>
+        <li
+          onClick={(e: React.MouseEvent<HTMLLIElement>) => handleMenu('salad', e)}
+          data-type={active == 'salad'}
+        >
           SALAD
         </li>
       </ul>
