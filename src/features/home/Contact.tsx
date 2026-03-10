@@ -18,12 +18,13 @@ export const Contact = () => {
     { src: '/images/gallery_3.png', title: 'FOOD GALLERY' },
   ];
   const year = new Date().getFullYear();
+
   return (
     <section className="section contact">
       <img src="/images/sky.png" alt="" className="background-image" />
       <div className="dimmed" />
 
-      <div className="contact-item">
+      <div className="contact-item only-desktop">
         <div className="description">
           <div className="sub-title">
             <div className="line" /> НИСЛЭГИЙН АМТ
@@ -41,7 +42,7 @@ export const Contact = () => {
         <div className="contact-item-info">
           <img src="/images/logo.png" alt="" className="logo" />
           <ul className="schedule">
-            <li>Ажлын цаг</li>
+            <li className="title">Ажлын цаг</li>
             <li>
               <p>
                 Monday - Friday
@@ -51,14 +52,14 @@ export const Contact = () => {
             </li>
             <li>
               <p>
-                Monday - Friday
+                Saturday - Sunday
                 <br />
-                <span>07:00 am - 09:00 pm</span>
+                <span>09:00 am - 09:00 pm</span>
               </p>
             </li>
           </ul>
           <ul className="contact-info">
-            <li>Холбоо барих</li>
+            <li className="title">Холбоо барих</li>
             <li>
               <IconMapPin2 />
               <p>
@@ -84,7 +85,7 @@ export const Contact = () => {
               </p>
             </li>
           </ul>
-          <img src="/images/set.png" alt="" className="set" />
+          <img src="/images/set.png" alt="" className="set only-desktop" />
         </div>
         <div className="copyright">Copyright © {year} SKY CAFE. All Rights Reserved.</div>
       </div>

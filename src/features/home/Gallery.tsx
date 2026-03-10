@@ -15,7 +15,7 @@ export const Gallery = () => {
   ];
   return (
     <section className="section gallery h-full">
-      <img src="/images/gallery_bg.png" alt="" className="background-image" />
+      <img src="/images/gallery_bg.png" alt="" className="background-image only-desktop" />
       <div className="food-grid">
         {images.map((item, i) => (
           <div className={`item ${i == 0 && 'item1'} ${i == 2 && 'tall'}`} key={`flex-item-${i}`}>

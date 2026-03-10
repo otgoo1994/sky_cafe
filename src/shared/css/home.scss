@@ -187,6 +187,53 @@ section.section {
     z-index: -1;
   }
 
+  .mobile-about {
+    display: flex;
+    background-color: colors.$bg-blue;
+    width: 100%;
+    @include utils.vw-convert-mobile(padding, 50px 80px);
+
+    .card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include utils.vw-convert-mobile(padding, 30px 50px);
+      @include utils.vw-convert-mobile(border-radius, 30px);
+
+      background: linear-gradient(135deg, #2d6fa3 0%, #1e3c72 30%, #0f1f3d 100%);
+
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+      .avatar {
+        width: 25%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .airplane {
+        width: 140%;
+        @include utils.vw-convert-mobile(margin-bottom, 30px);
+      }
+
+      .title {
+        font-weight: 500;
+        color: colors.$white;
+        font-family: 'RubikMedium';
+        @include utils.vw-convert-mobile(font-size, 35px);
+        @include utils.vw-convert-mobile(margin-top, 30px);
+      }
+
+      .description {
+        color: colors.$white;
+        text-align: justify;
+        @include utils.vw-convert-mobile(font-size, 30px);
+        @include utils.vw-convert-mobile(margin-top, 30px);
+      }
+    }
+  }
+
   .about {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -612,15 +659,18 @@ section.section {
   align-items: center;
   height: auto;
 
+  @include utils.mobile {
+    background-color: colors.$bg-blue;
+  }
+
   .food-grid {
     display: none;
     @include utils.mobile {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       width: 85%;
-      height: 80%;
-      gap: 20px;
-      @include utils.vw-convert-mobile(gap, 20px);
+      height: 90%;
+      @include utils.vw-convert-mobile(gap, 30px);
 
       .item {
         overflow: hidden;
@@ -744,6 +794,7 @@ section.section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   &-item {
     flex-grow: 1;
     z-index: 2;
@@ -753,10 +804,6 @@ section.section {
     height: 50%;
     position: relative;
     flex-direction: column;
-
-    @include utils.mobile {
-      display: none;
-    }
 
     .airplane {
       width: 50%;
@@ -866,12 +913,19 @@ section.section {
 
       @include utils.mobile {
         width: 90%;
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include utils.vw-convert-mobile(margin-bottom, 50px);
       }
 
       .logo {
         width: 100%;
         height: auto;
+
+        @include utils.mobile {
+          width: 70%;
+        }
       }
 
       ul {
@@ -880,7 +934,7 @@ section.section {
 
         @include utils.mobile {
           margin: 0;
-          @include utils.vw-convert-mobile(padding-left, 40px);
+          padding: 0;
         }
 
         li {
@@ -888,7 +942,16 @@ section.section {
           position: relative;
 
           @include utils.mobile {
-            @include utils.vw-convert-mobile(margin-bottom, 10px);
+            @include utils.vw-convert-mobile(margin-bottom, 20px);
+            text-align: center;
+
+            svg {
+              display: none;
+            }
+
+            p {
+              width: 100%;
+            }
           }
 
           &:first-child {
@@ -913,6 +976,10 @@ section.section {
           span {
             color: colors.$orange;
           }
+
+          &.title {
+            @include utils.vw-convert-mobile(margin-top, 30px);
+          }
         }
 
         &.schedule {
@@ -921,7 +988,8 @@ section.section {
             @include utils.vw-convert-desktop(padding-left, 20px);
 
             @include utils.mobile {
-              @include utils.vw-convert-mobile(padding-left, 20px);
+              padding: 0;
+              text-align: center;
             }
 
             &:not(:first-child) {
@@ -934,7 +1002,8 @@ section.section {
                 line-height: 1;
 
                 @include utils.mobile {
-                  @include utils.vw-convert-mobile(font-size, 30px);
+                  // @include utils.vw-convert-mobile(font-size, 30px);
+                  content: none;
                 }
               }
             }
@@ -987,6 +1056,7 @@ section.section {
       text-align: center;
 
       @include utils.mobile {
+        display: none;
         @include utils.vw-convert-mobile(border-width, 1px);
         @include utils.vw-convert-mobile(margin-top, 35px);
         @include utils.vw-convert-mobile(padding-top, 35px);

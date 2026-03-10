@@ -46,6 +46,7 @@
           justify-content: center;
           align-items: center;
           @include utils.vw-convert-desktop(gap, 3px);
+          cursor: pointer;
 
           svg {
             @include utils.vw-convert-desktop(width, 18px);

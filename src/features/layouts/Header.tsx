@@ -31,24 +31,16 @@ export const Header = () => {
         <div className="header-body-content menu-desktop">
           <ul>
             <li>
-              <p>
-                НҮҮР <IconChevronDown />
-              </p>
+              <p>НҮҮР</p>
             </li>
             <li>
-              <p>
-                БИДНИЙ ТУХАЙ <IconChevronDown />
-              </p>
+              <p>БИДНИЙ ТУХАЙ</p>
             </li>
             <li>
-              <p>
-                МЕНЮ <IconChevronDown />
-              </p>
+              <p>МЕНЮ</p>
             </li>
             <li>
-              <p>
-                ХОЛБОО БАРИХ <IconChevronDown />
-              </p>
+              <p>ХОЛБОО БАРИХ</p>
             </li>
           </ul>
         </div>
