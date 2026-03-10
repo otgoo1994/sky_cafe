@@ -46,7 +46,7 @@ export const Menu = () => {
     setActive(menu);
     e.currentTarget.scrollIntoView({
       behavior: 'smooth',
-      block: 'center',
+      block: 'nearest',
       inline: 'center',
     });
   };
