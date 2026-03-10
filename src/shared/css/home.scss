@@ -160,6 +160,11 @@ section.section {
               backdrop-filter: blur(10px);
               -webkit-backdrop-filter: blur(10px);
               color: colors.$white;
+              animation: cloudMove 6s ease infinite;
+
+              &:nth-child(2) {
+                animation: cloudMove 4s ease infinite;
+              }
 
               &.top {
                 top: 5%;
@@ -1077,4 +1082,16 @@ section.section {
   user-select: none;
   pointer-events: none;
   z-index: 1;
+}
+
+@keyframes cloudMove {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

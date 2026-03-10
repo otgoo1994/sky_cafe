@@ -1,12 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 export const About = () => {
+  const cardRef = useRef<HTMLElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const imgRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!cardRef.current) return;
+    if (!textRef.current) return;
+
+    ScrollTrigger.create({
+      trigger: cardRef.current,
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.fromTo(textRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });
+        gsap.fromTo(imgRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });
+      },
+    });
+  }, []);
+
   return (
-    <section className="section only-desktop">
+    <section className="section only-desktop" ref={cardRef}>
       <img src="/images/bg_flower.png" alt="" className="background-image" />
       <div className="container about">
-        <div className="text">
+        <div className="text" ref={textRef}>
           <div className="sub-title">
             <div className="line" /> БИДНИЙ ТУХАЙ
           </div>
@@ -32,7 +55,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="img-container">
+        <div className="img-container" ref={imgRef}>
           <img src="/images/cook.png" alt="" className="image" />
         </div>
       </div>

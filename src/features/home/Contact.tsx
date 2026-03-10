@@ -7,9 +7,15 @@ import {
   IconMessageShare,
   IconPhoneCall,
 } from '@tabler/icons-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export const Contact = () => {
+  const cardRef = useRef<HTMLElement | null>(null);
+  const titleRef = useRef<HTMLDivElement | null>(null);
+  const contactRef = useRef<HTMLDivElement | null>(null);
+
   const images = [
     { src: '/images/gallery_2.png', title: 'FOOD GALLERY' },
     { src: '/images/gallery_3.png', title: 'FOOD GALLERY' },
@@ -19,12 +25,34 @@ export const Contact = () => {
   ];
   const year = new Date().getFullYear();
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const isMobile = window.innerWidth < 720;
+
+    if (!cardRef.current) return;
+    if (!titleRef.current) return;
+    if (!contactRef.current) return;
+
+    ScrollTrigger.create({
+      trigger: cardRef.current,
+      start: isMobile ? 'top bottom' : 'top 80%',
+      onEnter: () => {
+        gsap.fromTo(titleRef.current, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });
+        gsap.fromTo(
+          contactRef.current,
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, delay: 0.5 },
+        );
+      },
+    });
+  }, []);
+
   return (
-    <section className="section contact">
+    <section className="section contact" ref={cardRef}>
       <img src="/images/sky.png" alt="" className="background-image" />
       <div className="dimmed" />
 
-      <div className="contact-item only-desktop">
+      <div className="contact-item only-desktop" ref={titleRef}>
         <div className="description">
           <div className="sub-title">
             <div className="line" /> НИСЛЭГИЙН АМТ
@@ -39,7 +67,7 @@ export const Contact = () => {
       </div>
       <div className="contact-item">
         <img src="/images/bg_dark_blue.png" alt="" className="background" />
-        <div className="contact-item-info">
+        <div className="contact-item-info" ref={contactRef}>
           <img src="/images/logo.png" alt="" className="logo" />
           <ul className="schedule">
             <li className="title">Ажлын цаг</li>
