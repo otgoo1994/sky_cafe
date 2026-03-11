@@ -200,3 +200,96 @@
     }
   }
 }
+
+.custom-prev {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 99;
+  transform: translateY(-50%);
+  @include utils.vw-convert-mobile(width, 15px);
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
+  @include utils.mobile {
+    display: none;
+  }
+
+  svg.arrow {
+    width: 100%;
+  }
+
+  &.primary {
+    svg.arrow {
+      color: colors.$white;
+    }
+  }
+
+  &.warning {
+    svg.arrow {
+      color: colors.$orange;
+    }
+  }
+
+  svg.chevron {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .custom-navigate-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+}
+
+.custom-next {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 99;
+  transform: translateY(-50%);
+  @include utils.vw-convert-mobile(width, 15px);
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
+  @include utils.mobile {
+    display: none;
+  }
+
+  svg.arrow {
+    width: 100%;
+    transform: scaleX(-1);
+  }
+
+  &.primary {
+    svg.arrow {
+      color: colors.$white;
+    }
+  }
+
+  &.warning {
+    svg.arrow {
+      color: colors.$orange;
+    }
+  }
+
+  svg.chevron {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    z-index: 1;
+  }
+
+  .custom-navigate-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+}

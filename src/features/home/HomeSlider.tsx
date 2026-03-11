@@ -1,12 +1,48 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
+import { Navigation } from 'swiper/modules';
 import { ComButton } from '~/shared/ui/';
-import { IconGardenCart, IconChevronRight } from '@tabler/icons-react';
+import {
+  IconGardenCart,
+  IconChevronRight,
+  IconChevronCompactRight,
+  IconChevronCompactLeft,
+} from '@tabler/icons-react';
+import Arrow from '../../../public/images/arrow.svg?react';
 
 export const HomeSlider = () => {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const handleChange = (swiper: SwiperType) => {
+    setCurrentIndex(swiper.activeIndex);
+  };
+
+  const handleNavigator = (direction: string) => {
+    if (direction === 'prev') {
+      swiperRef.current?.slidePrev();
+      return;
+    }
+
+    swiperRef.current?.slideNext();
+  };
+
   return (
     <section className="section home-slider h-full">
-      <Swiper spaceBetween={0} slidesPerView={1}>
+      <Swiper
+        spaceBetween={0}
+        slidesPerView={1}
+        navigation={{
+          nextEl: '.custom-next',
+          prevEl: '.custom-prev',
+        }}
+        onSlideChange={handleChange}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+      >
         <SwiperSlide>
           <img src="/images/bg_blue.png" alt="" className="background-image" />
           <div className="grid col-2 slider-content">
@@ -76,6 +112,24 @@ export const HomeSlider = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+      <div
+        className={`custom-prev ${currentIndex === 0 ? 'primary' : 'warning'}`}
+        onClick={() => handleNavigator('prev')}
+      >
+        <div className="custom-navigate-container">
+          <IconChevronCompactRight className="chevron" />
+          <Arrow className="arrow" />
+        </div>
+      </div>
+      <div
+        className={`custom-next ${currentIndex === 0 ? 'primary' : 'warning'}`}
+        onClick={() => handleNavigator('next')}
+      >
+        <div className="custom-navigate-container">
+          <IconChevronCompactLeft className="chevron" />
+          <Arrow className="arrow" />
+        </div>
+      </div>
     </section>
   );
 };
