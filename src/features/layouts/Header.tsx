@@ -10,6 +10,7 @@ import {
   IconMenu,
   IconX,
 } from '@tabler/icons-react';
+import Logo from '../../../public/images/logo.svg?react';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<string | null>(null);
@@ -35,9 +36,10 @@ export const Header = () => {
         </div>
         <div className="header-body">
           <div className="header-body-content">
-            <img src="/images/logo.png" alt="" className="logo" />
+            {/* <img src="/images/logo.png" alt="" className="logo" /> */}
+            <Logo className="logo light" />
             <div className="mobile-menu-button" onClick={showMenu}>
-              <IconMenu />
+              <IconMenu className="light" />
             </div>
           </div>
           <div className="header-body-content menu-desktop">

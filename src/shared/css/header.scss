@@ -60,6 +60,15 @@
     .logo {
       height: 80%;
       width: auto;
+
+      &.dark {
+        fill: colors.$bg-blue;
+      }
+
+      &.light {
+        fill: colors.$white;
+      }
+
       @include utils.mobile {
         width: 50%;
         height: auto;
@@ -81,9 +90,16 @@
         cursor: pointer;
 
         svg {
-          color: colors.$white;
           width: 40%;
           height: 40%;
+
+          &.light {
+            color: colors.$white;
+          }
+
+          &.dark {
+            color: colors.$bg-blue;
+          }
         }
       }
     }

@@ -49,6 +49,20 @@ export const HomeSlider = () => {
           { opacity: 0, y: 40 },
           { opacity: 1, y: 0, duration: 0.6, delay: 0.6 },
         );
+
+        const theme = slide.dataset.theme;
+        const header = document.querySelectorAll('.header .header-body-content svg');
+        header.forEach((element) => {
+          if (element) {
+            if (theme === 'light') {
+              element.classList.add('light');
+              element.classList.remove('dark');
+            } else {
+              element.classList.add('dark');
+              element.classList.remove('light');
+            }
+          }
+        });
       }
     });
   };
@@ -76,7 +90,7 @@ export const HomeSlider = () => {
           swiperRef.current = swiper;
         }}
       >
-        <SwiperSlide>
+        <SwiperSlide data-theme="light">
           <img src="/images/bg_blue.png" alt="" className="background-image" />
           <div className="grid col-2 slider-content">
             <div className="image mobile">
@@ -110,7 +124,7 @@ export const HomeSlider = () => {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide data-theme="dark">
           <img src="/images/bg_2.png" alt="" className="background-image" />
           <div className="grid col-2 slider-content light">
             <div className="image mobile">
@@ -146,7 +160,7 @@ export const HomeSlider = () => {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide data-theme="dark">
           <img src="/images/bg_2.png" alt="" className="background-image" />
           <div className="grid col-2 slider-content light">
             <div className="image mobile">
