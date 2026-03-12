@@ -72,6 +72,13 @@ button.button {
       color: colors.$white;
     }
   }
+
+  &.dark-blue {
+    background-color: colors.$bg-blue;
+    span {
+      color: colors.$white;
+    }
+  }
 }
 
 .grid {

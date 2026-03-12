@@ -21,16 +21,46 @@ section.section {
         align-items: center;
 
         .slider-content {
-          width: 70%;
+          width: 100%;
+          height: 100%;
 
           @include utils.mobile {
             height: 70%;
             width: 90%;
           }
 
+          &.light {
+            .text {
+              .title,
+              .sub-title,
+              .description {
+                color: colors.$bg-blue;
+              }
+
+              .sub-title .line {
+                background-color: colors.$bg-blue;
+              }
+
+              button {
+                &.dark,
+                &.dark-blue {
+                  svg {
+                    color: colors.$white;
+                  }
+                }
+              }
+            }
+          }
+
           .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            @include utils.vw-convert-mobile(padding-left, 100px);
+
             @include utils.mobile {
               text-align: center;
+              padding: 0;
             }
 
             .sub-title {
@@ -73,7 +103,7 @@ section.section {
               font-weight: 500;
               color: colors.$white;
               font-family: 'RubikMedium';
-              @include utils.vw-convert-desktop(font-size, 120px);
+              @include utils.vw-convert-desktop(font-size, 135px);
 
               @include utils.mobile {
                 @include utils.vw-convert-mobile(font-size, 100px);
@@ -115,6 +145,9 @@ section.section {
             width: 100%;
             height: 100%;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             &.mobile {
               display: none;
@@ -138,11 +171,13 @@ section.section {
             }
 
             img {
-              position: absolute;
-              right: 0;
-              top: 0;
-              width: 125%;
-              transform: translateX(20%);
+              // position: absolute;
+              // right: 0;
+              // top: 0;
+              width: 100%;
+
+              // width: 125%;
+              // transform: translateX(20%);
             }
 
             .mobile-container {
@@ -167,12 +202,12 @@ section.section {
               }
 
               &.top {
-                top: 5%;
+                top: 25%;
                 left: 0;
               }
 
               &.bottom {
-                bottom: 0;
+                bottom: 20%;
                 right: 0;
               }
             }

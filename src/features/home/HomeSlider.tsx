@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Navigation } from 'swiper/modules';
@@ -11,13 +11,46 @@ import {
   IconChevronCompactLeft,
 } from '@tabler/icons-react';
 import Arrow from '../../../public/images/arrow.svg?react';
+import { gsap } from 'gsap';
 
 export const HomeSlider = () => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
+  useEffect(() => {
+    // gsap.registerPlugin(ScrollTrigger);
+  }, []);
+
   const handleChange = (swiper: SwiperType) => {
     setCurrentIndex(swiper.activeIndex);
+
+    const activeIndex = swiper.activeIndex;
+
+    swiper.slides.forEach((slide, index) => {
+      const subTitle = slide.querySelector('.sub-title');
+      const title = slide.querySelector('.title');
+      const description = slide.querySelector('.description');
+      const buttonContainer = slide.querySelector('.button-container');
+      if (index !== activeIndex) {
+        gsap.set(subTitle, { opacity: 0, y: 40 });
+        gsap.set(title, { opacity: 0, y: 40 });
+        gsap.set(description, { opacity: 0, y: 40 });
+        gsap.set(buttonContainer, { opacity: 0, y: 40 });
+      } else {
+        gsap.fromTo(subTitle, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6 });
+        gsap.fromTo(title, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.2 });
+        gsap.fromTo(
+          description,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.6, delay: 0.4 },
+        );
+        gsap.fromTo(
+          buttonContainer,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.6, delay: 0.6 },
+        );
+      }
+    });
   };
 
   const handleNavigator = (direction: string) => {
@@ -60,7 +93,7 @@ export const HomeSlider = () => {
               </div>
               <div className="title">sky café</div>
               <p className="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem
                 Ipsum has been the industry's standard
               </p>
               <div className="button-container">
@@ -78,13 +111,11 @@ export const HomeSlider = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/images/bg_blue.png" alt="" className="background-image" />
-          <div className="grid col-2 slider-content">
+          <img src="/images/bg_2.png" alt="" className="background-image" />
+          <div className="grid col-2 slider-content light">
             <div className="image mobile">
               <div className="mobile-container">
-                <img src="/images/OB.png" alt="icon" />
-                <p className="image-title top">Нислэгийн амтыг таны гарт</p>
-                <p className="image-title bottom">Нисэх мэт шуурхай хүргэлт</p>
+                <img src="/images/set_b.png" alt="icon" />
               </div>
             </div>
             <div className="text">
@@ -103,11 +134,51 @@ export const HomeSlider = () => {
                   variant="warning"
                   rightIcon={<IconChevronRight />}
                 />
-                <ComButton label="Дэлгэрэнгүй" variant="primary" rightIcon={<IconChevronRight />} />
+                <ComButton
+                  label="Дэлгэрэнгүй"
+                  variant="dark-blue"
+                  rightIcon={<IconChevronRight />}
+                />
               </div>
             </div>
             <div className="image">
-              <img src="/images/OB.png" alt="icon" />
+              <img src="/images/set_b.png" alt="icon" />
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/images/bg_2.png" alt="" className="background-image" />
+          <div className="grid col-2 slider-content light">
+            <div className="image mobile">
+              <div className="mobile-container">
+                <img src="/images/set_a.png" alt="icon" />
+              </div>
+            </div>
+            <div className="text">
+              <div className="sub-title">
+                <div className="line" /> НИСЛЭГИЙН АМТ{' '}
+                <img src="/images/ob_icon.png" alt="icon" className="icon" />
+              </div>
+              <div className="title">sky café</div>
+              <p className="description">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard
+              </p>
+              <div className="button-container">
+                <ComButton
+                  label="Захиалга өгөх"
+                  variant="warning"
+                  rightIcon={<IconChevronRight />}
+                />
+                <ComButton
+                  label="Дэлгэрэнгүй"
+                  variant="dark-blue"
+                  rightIcon={<IconChevronRight />}
+                />
+              </div>
+            </div>
+            <div className="image">
+              <img src="/images/set_a.png" alt="icon" />
             </div>
           </div>
         </SwiperSlide>

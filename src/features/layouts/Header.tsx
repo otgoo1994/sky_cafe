@@ -15,8 +15,6 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState<string | null>(null);
 
   const showMenu = () => {
-    console.log('=====');
-
     setIsOpen('menu');
   };
 
@@ -28,9 +26,8 @@ export const Header = () => {
             <span>OPENING HOURS: </span> 07:00 AM - 10:00 PM
           </div>
           <div className="icons">
-            <IconBrandFacebookFilled fill="white" />
             <IconBrandInstagram color="white" />
-            <IconBrandYoutubeFilled fill="white" />
+            <IconBrandFacebookFilled fill="white" />
           </div>
           <div className="title">
             <span>ХАЯГ: </span> УЛААНБААТАР, БУЯНТ-УХАА
