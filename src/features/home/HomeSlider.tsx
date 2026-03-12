@@ -23,7 +23,7 @@ export const HomeSlider = () => {
 
   const handleChange = (swiper: SwiperType) => {
     setCurrentIndex(swiper.activeIndex);
-
+    const isMobile = window.innerWidth < 720;
     const activeIndex = swiper.activeIndex;
 
     swiper.slides.forEach((slide, index) => {
@@ -49,6 +49,8 @@ export const HomeSlider = () => {
           { opacity: 0, y: 40 },
           { opacity: 1, y: 0, duration: 0.6, delay: 0.6 },
         );
+
+        if (!isMobile) return;
 
         const theme = slide.dataset.theme;
         const header = document.querySelectorAll('.header .header-body-content svg');

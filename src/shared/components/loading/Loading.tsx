@@ -5,11 +5,19 @@ export const Loading = () => {
 
   return modalRoot
     ? ReactDOM.createPortal(
-        <div className="fixed w-[100%] h-[100%] inset-0 z-absulute flex items-center justify-center bg-white">
-          <div className="flex flex-col items-center justify-center gap-[10px]">
-            {/* <IconSpinner /> */}
-            <span className="text-[15px] tracking-[-2%] text-text-black font-medium">Loading</span>
-          </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            height: '100vh',
+            background: '#132440',
+          }}
+        >
+          {/* <p>Loading</p> */}
+          {/* <Lottie animationData={loadingJson} loop={true} autoplay={true} /> */}
+          <img src="/images/logo.png" alt="" style={{ width: '40%', height: 'auto' }} />
         </div>,
         modalRoot,
       )
