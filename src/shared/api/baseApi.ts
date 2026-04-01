@@ -6,8 +6,6 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 const contentType = import.meta.env.VITE_CONTENT_TYPE;
 
 const headersData = {
-  'access-control-allow-credentials': true,
-  'Access-Control-Allow-Origin': '*',
   'Content-Type': contentType,
 };
 
@@ -19,7 +17,6 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    config.withCredentials = true;
     const accessToken = localStorage.getItem('accessToken');
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
@@ -73,13 +70,7 @@ axiosInstance.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        const refreshResponse = await axios.post(
-          `${baseUrl}/web/refresh/token`,
-          {},
-          {
-            withCredentials: true,
-          },
-        );
+        const refreshResponse = await axios.post(`${baseUrl}/web/refresh/token`, {});
 
         if (refreshResponse.data.status === 200) {
           const newAccessToken = refreshResponse.data.token;

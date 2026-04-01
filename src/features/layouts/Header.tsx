@@ -6,7 +6,7 @@ import {
   IconChevronRight,
   IconBrandFacebookFilled,
   IconBrandInstagram,
-  IconBrandYoutubeFilled,
+  IconBrandXFilled,
   IconMenu,
   IconX,
 } from '@tabler/icons-react';
@@ -23,16 +23,13 @@ export const Header = () => {
     <>
       <div className="header">
         <div className="header-bar">
-          <div className="title">
-            <span>OPENING HOURS: </span> 07:00 AM - 10:00 PM
-          </div>
+          <div className="title"></div>
           <div className="icons">
             <IconBrandInstagram color="white" />
             <IconBrandFacebookFilled fill="white" />
+            <IconBrandXFilled fill="white" />
           </div>
-          <div className="title">
-            <span>ХАЯГ: </span> УЛААНБААТАР, БУЯНТ-УХАА
-          </div>
+          <div className="title"></div>
         </div>
         <div className="header-body">
           <div className="header-body-content">
@@ -52,6 +49,9 @@ export const Header = () => {
               </li>
               <li>
                 <p>МЕНЮ</p>
+              </li>
+              <li>
+                <p>САЛБАРУУД</p>
               </li>
               <li>
                 <p>ХОЛБОО БАРИХ</p>
@@ -86,6 +86,9 @@ export const Header = () => {
             </li>
             <li>
               <p>МЕНЮ</p>
+            </li>
+            <li>
+              <p>САЛБАРУУД</p>
             </li>
             <li>
               <p>ХОЛБОО БАРИХ</p>

@@ -49,12 +49,16 @@ export const MobileAbout = () => {
         <div className="card">
           <img src="/images/chef.jpg" alt="" className="avatar" ref={avatarRef} />
           <p className="title" ref={titleRef}>
-            About us
+            Sky Café нь нислэгийн үйлчилгээний стандартыг өдөр тутмын хоол, кофены соёлтой
+            хослуулсан онцгой орчин юм
           </p>
           <p className="description" ref={descriptionRef}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type specimen book.
+            Бид эрүүл, зөв хооллолтыг дэмжихийн зэрэгцээ онгоцны үйлчилгээг таны ширээнд хүргэхийг
+            эрхэм зорилгоо болгодог. Шинэхэн, чанартай орцыг нямбайлан сонгож, хариуцлагатайгаар
+            бэлтгэсэн хоолыг үйлчлүүлэгч бүрд хүргэхийг зорьдог. Бидний хувьд эрүүл, тэнцвэртэй
+            хооллолт нь зүгээр нэг сонголт бус, харин өдөр тутмын амьдралын хэв маяг юм. Иймээс
+            манай кафед та зөвхөн амттай хоол төдийгүй, чанар, аюулгүй байдал, үйлчилгээний соёлыг
+            нэг дороос мэдрэх боломжтой
           </p>
           <img src="/images/airplane.png" alt="" className="airplane" ref={airplaneRef} />
         </div>

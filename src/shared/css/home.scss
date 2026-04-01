@@ -261,6 +261,7 @@ section.section {
         font-weight: 500;
         color: colors.$white;
         font-family: 'RubikMedium';
+        text-align: center;
         @include utils.vw-convert-mobile(font-size, 35px);
         @include utils.vw-convert-mobile(margin-top, 30px);
       }
@@ -373,7 +374,7 @@ section.section {
 
         span {
           font-weight: bold;
-          @include utils.vw-convert-desktop(font-size, 25px);
+          @include utils.vw-convert-desktop(font-size, 20px);
 
           @include utils.mobile {
             @include utils.vw-convert-mobile(font-size, 25px);
@@ -463,16 +464,21 @@ section.section {
                 align-items: center;
 
                 .name {
-                  @include utils.vw-convert-mobile(font-size, 30px);
+                  @include utils.vw-convert-mobile(font-size, 25px);
                   font-family: 'GeologicaSemibold';
                   color: colors.$blue;
+                  text-transform: uppercase;
                 }
 
                 .ingredients {
-                  @include utils.vw-convert-mobile(font-size, 25px);
+                  @include utils.vw-convert-mobile(font-size, 20px);
                   font-weight: 400;
                   font-family: 'GeologicaRegular';
                   color: colors.$grey;
+                  white-space: nowrap;
+                  @include utils.vw-convert-mobile(width, 250px);
+                  text-overflow: ellipsis;
+                  overflow: hidden;
                 }
 
                 .price {
@@ -535,6 +541,9 @@ section.section {
             position: absolute;
             top: 0;
             transform: translateY(-30%);
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
           }
 
           .name {
@@ -673,6 +682,7 @@ section.section {
     color: colors.$white;
     border: transparent solid colors.$orange;
     cursor: pointer;
+    text-transform: uppercase;
     @include utils.vw-convert-desktop(padding, 10px 20px);
     @include utils.vw-convert-desktop(border-radius, 20px);
 
@@ -764,6 +774,7 @@ section.section {
         width: 100%;
         position: relative;
         overflow: hidden;
+        @include utils.vw-convert-desktop(border-radius, 8px);
 
         &:hover {
           .shadow {
@@ -788,7 +799,7 @@ section.section {
 
         .shadow {
           background-color: colors.$dark-blue;
-          opacity: 0.5;
+          opacity: 0.9;
           position: absolute;
           left: 0;
           top: 0;
@@ -812,17 +823,30 @@ section.section {
 
           &-border {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: colors.$orange;
-            width: calc(100% - 30px);
-            height: calc(100% - 30px);
+            width: calc(100% - 50px);
+            height: calc(100% - 20px);
             border: 2px solid colors.$orange;
-            font-weight: 700;
-            @include utils.vw-convert-desktop(font-size, 20px);
+            @include utils.vw-convert-desktop(padding, 0 12px);
+            @include utils.vw-convert-desktop(border-radius, 5px);
 
-            @include utils.mobile {
-              @include utils.vw-convert-mobile(font-size, 20px);
+            &-title {
+              font-weight: 700;
+              @include utils.vw-convert-desktop(margin-top, 12px);
+            }
+
+            span {
+              text-transform: uppercase;
+              text-align: center;
+              @include utils.vw-convert-desktop(font-size, 12px);
+
+              a {
+                text-decoration: none;
+                color: colors.$orange;
+              }
             }
           }
         }
@@ -993,6 +1017,10 @@ section.section {
             p {
               width: 100%;
             }
+
+            &.title {
+              @include utils.vw-convert-mobile(margin-top, 30px);
+            }
           }
 
           &:first-child {
@@ -1017,10 +1045,6 @@ section.section {
           span {
             color: colors.$orange;
           }
-
-          &.title {
-            @include utils.vw-convert-mobile(margin-top, 30px);
-          }
         }
 
         &.schedule {
@@ -1031,6 +1055,11 @@ section.section {
             @include utils.mobile {
               padding: 0;
               text-align: center;
+            }
+
+            a {
+              text-decoration: none;
+              color: colors.$white;
             }
 
             &:not(:first-child) {
@@ -1118,6 +1147,10 @@ section.section {
   user-select: none;
   pointer-events: none;
   z-index: 1;
+}
+
+.menu-swiper-empty {
+  @include utils.vw-convert-desktop(height, 357px);
 }
 
 @keyframes cloudMove {

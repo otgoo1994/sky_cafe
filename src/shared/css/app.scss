@@ -23,7 +23,7 @@ body {
 button.button {
   border: none;
   @include utils.vw-convert-desktop(border-radius, 5px);
-  @include utils.vw-convert-desktop(padding, 10px 20px);
+  @include utils.vw-convert-desktop(padding, 10px 30px);
   @include utils.vw-convert-desktop(gap, 8px);
   @include utils.vw-convert-desktop(font-size, 12px);
   font-weight: 600;

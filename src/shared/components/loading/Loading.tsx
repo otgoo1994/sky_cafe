@@ -15,9 +15,7 @@ export const Loading = () => {
             background: '#132440',
           }}
         >
-          {/* <p>Loading</p> */}
-          {/* <Lottie animationData={loadingJson} loop={true} autoplay={true} /> */}
-          <img src="/images/logo.png" alt="" style={{ width: '40%', height: 'auto' }} />
+          <img src="/images/logo.png" alt="" style={{ width: '10%', height: 'auto' }} />
         </div>,
         modalRoot,
       )

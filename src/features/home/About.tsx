@@ -34,23 +34,25 @@ export const About = () => {
             <div className="line" /> БИДНИЙ ТУХАЙ
           </div>
           <div className="title">
-            Органик, нислэгийн <br />
-            хоолыг танд хүргэнэ.
+            Sky Café нь нислэгийн үйлчилгээний стандартыг өдөр тутмын хоол, кофены соёлтой
+            хослуулсан онцгой орчин юм
           </div>
           <p className="description">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages.
+            Бид эрүүл, зөв хооллолтыг дэмжихийн зэрэгцээ онгоцны үйлчилгээг таны ширээнд хүргэхийг
+            эрхэм зорилгоо болгодог. Шинэхэн, чанартай орцыг нямбайлан сонгож, хариуцлагатайгаар
+            бэлтгэсэн хоолыг үйлчлүүлэгч бүрд хүргэхийг зорьдог. Бидний хувьд эрүүл, тэнцвэртэй
+            хооллолт нь зүгээр нэг сонголт бус, харин өдөр тутмын амьдралын хэв маяг юм. Иймээс
+            манай кафед та зөвхөн амттай хоол төдийгүй, чанар, аюулгүй байдал, үйлчилгээний соёлыг
+            нэг дороос мэдрэх боломжтой
           </p>
           <div className="quotes">
             <div>
               <img src="/images/chef.jpg" alt="" />
             </div>
             <span>
-              There are many variations <br /> of passages of Lorem...
+              {/* There are many variations <br /> of passages of Lorem... */}
+              Сайн байна уу, эрхэм зорчигчид оо. Sky Cafe-ийн нислэгт морилно уу. Танд амттай аялал,
+              таатай нислэгийг хүсье.”
             </span>
           </div>
         </div>

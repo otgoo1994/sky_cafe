@@ -12,10 +12,16 @@ import {
 } from '@tabler/icons-react';
 import Arrow from '../../../public/images/arrow.svg?react';
 import { gsap } from 'gsap';
+import { HomeQuery, bannerType } from '~/entities/home';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 export const HomeSlider = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const swiperRef = useRef<SwiperType | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const { data: banners } = useSuspenseQuery(HomeQuery.getBanners());
+
+  console.log(banners);
 
   useEffect(() => {
     // gsap.registerPlugin(ScrollTrigger);
@@ -92,41 +98,46 @@ export const HomeSlider = () => {
           swiperRef.current = swiper;
         }}
       >
-        <SwiperSlide data-theme="light">
-          <img src="/images/bg_blue.png" alt="" className="background-image" />
-          <div className="grid col-2 slider-content">
-            <div className="image mobile">
-              <div className="mobile-container">
-                <img src="/images/OB.png" alt="icon" />
-                <p className="image-title top">Нислэгийн амтыг таны гарт</p>
-                <p className="image-title bottom">Нисэх мэт шуурхай хүргэлт</p>
+        {banners &&
+          banners.data &&
+          banners.data.map((banner: bannerType, index: number) => (
+            <SwiperSlide data-theme="light" key={`main-banner-${index}`}>
+              <img
+                src={banner.theme === 'light' ? '/images/bg_2.png' : '/images/bg_blue.png'}
+                alt=""
+                className="background-image"
+              />
+              <div className={`grid col-2 slider-content ${banner.theme === 'light' && 'light'}`}>
+                <div className="image mobile">
+                  <div className="mobile-container">
+                    <img src="/images/OB.png" alt="icon" />
+                    <p className="image-title top">Нислэгийн амтыг таны гарт</p>
+                    <p className="image-title bottom">Нисэх мэт шуурхай хүргэлт</p>
+                  </div>
+                </div>
+                <div className="text">
+                  <div className="sub-title">
+                    <div className="line" /> НИСЛЭГИЙН АМТ{' '}
+                    <img src="/images/ob_icon.png" alt="icon" className="icon" />
+                  </div>
+                  <div className="title">{banner.title}</div>
+                  <p className="description">{banner.description}</p>
+                  <div className="button-container">
+                    <ComButton
+                      label="Салбарууд"
+                      variant="warning"
+                      rightIcon={<IconChevronRight />}
+                    />
+                    {/* <ComButton label="Дэлгэрэнгүй" variant="primary" rightIcon={<IconChevronRight />} /> */}
+                  </div>
+                </div>
+                <div className="image">
+                  <img src={`${baseUrl}/common/download/${banner.file}`} alt="icon" />
+                </div>
               </div>
-            </div>
-            <div className="text">
-              <div className="sub-title">
-                <div className="line" /> НИСЛЭГИЙН АМТ{' '}
-                <img src="/images/ob_icon.png" alt="icon" className="icon" />
-              </div>
-              <div className="title">sky café</div>
-              <p className="description">
-                Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem
-                Ipsum has been the industry's standard
-              </p>
-              <div className="button-container">
-                <ComButton
-                  label="Захиалга өгөх"
-                  variant="warning"
-                  rightIcon={<IconChevronRight />}
-                />
-                <ComButton label="Дэлгэрэнгүй" variant="primary" rightIcon={<IconChevronRight />} />
-              </div>
-            </div>
-            <div className="image">
-              <img src="/images/OB.png" alt="icon" />
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide data-theme="dark">
+            </SwiperSlide>
+          ))}
+        {/* <SwiperSlide data-theme="dark">
           <img src="/images/bg_2.png" alt="" className="background-image" />
           <div className="grid col-2 slider-content light">
             <div className="image mobile">
@@ -141,20 +152,11 @@ export const HomeSlider = () => {
               </div>
               <div className="title">sky café</div>
               <p className="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard
+                Тэнгэрт мэт мэдрэмжийг таны ширээн дээр буулган амт, чанар, тав тухыг төгс
+                хослуулсан орчноор дамжуулж бид таны өдөр тутмын мөчийг илүү үнэ цэнтэй болгоно
               </p>
               <div className="button-container">
-                <ComButton
-                  label="Захиалга өгөх"
-                  variant="warning"
-                  rightIcon={<IconChevronRight />}
-                />
-                <ComButton
-                  label="Дэлгэрэнгүй"
-                  variant="dark-blue"
-                  rightIcon={<IconChevronRight />}
-                />
+                <ComButton label="Салбарууд" variant="warning" rightIcon={<IconChevronRight />} />
               </div>
             </div>
             <div className="image">
@@ -177,27 +179,18 @@ export const HomeSlider = () => {
               </div>
               <div className="title">sky café</div>
               <p className="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard
+                Тэнгэрт мэт мэдрэмжийг таны ширээн дээр буулган амт, чанар, тав тухыг төгс
+                хослуулсан орчноор дамжуулж бид таны өдөр тутмын мөчийг илүү үнэ цэнтэй болгоно
               </p>
               <div className="button-container">
-                <ComButton
-                  label="Захиалга өгөх"
-                  variant="warning"
-                  rightIcon={<IconChevronRight />}
-                />
-                <ComButton
-                  label="Дэлгэрэнгүй"
-                  variant="dark-blue"
-                  rightIcon={<IconChevronRight />}
-                />
+                <ComButton label="Салбарууд" variant="warning" rightIcon={<IconChevronRight />} />
               </div>
             </div>
             <div className="image">
               <img src="/images/set_a.png" alt="icon" />
             </div>
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
       <div
         className={`custom-prev ${currentIndex === 0 ? 'primary' : 'warning'}`}

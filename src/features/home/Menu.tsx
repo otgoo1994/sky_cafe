@@ -7,14 +7,21 @@ import { useState, useRef, useEffect } from 'react';
 import Rating from '@mui/material/Rating';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { HomeQuery, itemProductType, setProductType, categoryType } from '~/entities/home';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 export const Menu = () => {
-  const [active, setActive] = useState<string>('economy');
+  const [active, setActive] = useState<number>(1);
   const cardRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const categoryRef = useRef<HTMLUListElement | null>(null);
   const swiperRef = useRef<HTMLDivElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const [menuList, setMenuList] = useState<setProductType[]>([]);
+
+  const { data: producSettList } = useSuspenseQuery(HomeQuery.getSetProductList());
+  const { data: categoryList } = useSuspenseQuery(HomeQuery.getCategoryList());
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -42,13 +49,28 @@ export const Menu = () => {
     });
   }, []);
 
-  const handleMenu = (menu: string, e: React.MouseEvent<HTMLLIElement>) => {
+  useEffect(() => {
+    if (producSettList && producSettList.data) {
+      console.log(producSettList);
+      const items = producSettList.data.filter(
+        (item: setProductType) => item.categoryId === active,
+      );
+      setMenuList(items);
+    }
+  }, [producSettList, active]);
+
+  const handleMenu = (menu: number, e: React.MouseEvent<HTMLLIElement>) => {
     setActive(menu);
     e.currentTarget.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
       inline: 'center',
     });
+  };
+
+  const getIngredientsFromItems = (items: itemProductType[]) => {
+    const names = items.map((item) => item.name).join(', ');
+    return names;
   };
 
   return (
@@ -61,138 +83,51 @@ export const Menu = () => {
       </div>
 
       <ul className="main-menu" ref={categoryRef}>
-        <li
-          onClick={(e: React.MouseEvent<HTMLLIElement>) => handleMenu('economy', e)}
-          data-type={active == 'economy'}
-        >
-          ECONOMY CLASS
-        </li>
-        <li
-          onClick={(e: React.MouseEvent<HTMLLIElement>) => handleMenu('business', e)}
-          data-type={active == 'business'}
-        >
-          BUSINESS CLASS
-        </li>
-        <li
-          onClick={(e: React.MouseEvent<HTMLLIElement>) => handleMenu('breakfast', e)}
-          data-type={active == 'breakfast'}
-        >
-          BREAKFAST
-        </li>
-        <li
-          onClick={(e: React.MouseEvent<HTMLLIElement>) => handleMenu('salad', e)}
-          data-type={active == 'salad'}
-        >
-          SALAD
-        </li>
+        {categoryList &&
+          categoryList.data &&
+          categoryList.data.map((menu: categoryType, index: number) => (
+            <li
+              onClick={(e: React.MouseEvent<HTMLLIElement>) => handleMenu(menu.seq, e)}
+              data-type={active == menu.seq}
+              key={`category-${menu.seq}`}
+            >
+              {menu.name}
+            </li>
+          ))}
       </ul>
 
       <div className="menu-mobile" ref={menuRef}>
         <div className="menu-mobile-container">
-          <div className="item-container">
-            <div className="item">
-              <div className="item-image">
-                <img src="/images/set_1.png" alt="" className="" />
+          {menuList.map((item: setProductType) => (
+            <div className="item-container" key={`mobile-food-menu-${item.seq}`}>
+              <div className="item">
+                <div className="item-image">
+                  <img src={`${baseUrl}/common/download/${item.file}`} alt="" className="" />
+                </div>
+                <div className="item-info">
+                  <p className="name">{item.name}</p>
+                  <p className="ingredients">
+                    {item.items ? getIngredientsFromItems(item.items) : item.ingredients}
+                  </p>
+                  <p className="price">{item.price.toLocaleString()}₮</p>
+                  <ComButton
+                    label="Сагсанд нэмэх"
+                    variant="light"
+                    leftIcon={<IconGardenCart color="#FFFFFF" />}
+                  />
+                </div>
               </div>
-              <div className="item-info">
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="light"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
+              <div className="rating">
+                <Rating
+                  defaultValue={4}
+                  icon={<IconStarFilled style={{ color: '#1075ff' }} />}
+                  emptyIcon={<IconStarFilled style={{ color: '#FFFFFF' }} />}
+                  readOnly
                 />
+                (30 Reviews)
               </div>
             </div>
-            <div className="rating">
-              <Rating
-                defaultValue={4}
-                icon={<IconStarFilled style={{ color: '#1075ff' }} />}
-                emptyIcon={<IconStarFilled style={{ color: '#FFFFFF' }} />}
-                readOnly
-              />
-              (30 Reviews)
-            </div>
-          </div>
-          <div className="item-container">
-            <div className="item">
-              <div className="item-image">
-                <img src="/images/set_1.png" alt="" className="" />
-              </div>
-              <div className="item-info">
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="light"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
-                />
-              </div>
-            </div>
-            <div className="rating">
-              <Rating
-                defaultValue={4}
-                icon={<IconStarFilled style={{ color: '#1075ff' }} />}
-                emptyIcon={<IconStarFilled style={{ color: '#FFFFFF' }} />}
-                readOnly
-              />
-              (30 Reviews)
-            </div>
-          </div>
-          <div className="item-container">
-            <div className="item">
-              <div className="item-image">
-                <img src="/images/set_1.png" alt="" className="" />
-              </div>
-              <div className="item-info">
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="light"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
-                />
-              </div>
-            </div>
-            <div className="rating">
-              <Rating
-                defaultValue={4}
-                icon={<IconStarFilled style={{ color: '#1075ff' }} />}
-                emptyIcon={<IconStarFilled style={{ color: '#FFFFFF' }} />}
-                readOnly
-              />
-              (30 Reviews)
-            </div>
-          </div>
-          <div className="item-container">
-            <div className="item">
-              <div className="item-image">
-                <img src="/images/set_1.png" alt="" className="" />
-              </div>
-              <div className="item-info">
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="light"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
-                />
-              </div>
-            </div>
-            <div className="rating">
-              <Rating
-                defaultValue={4}
-                icon={<IconStarFilled style={{ color: '#1075ff' }} />}
-                emptyIcon={<IconStarFilled style={{ color: '#FFFFFF' }} />}
-                readOnly
-              />
-              (30 Reviews)
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -211,96 +146,27 @@ export const Menu = () => {
             },
           }}
         >
-          <SwiperSlide>
-            <div className="card-container">
-              <div className="menu-card">
-                <img src="/images/cook.png" alt="" className="" />
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="dark"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-container">
-              <div className="menu-card">
-                <img src="/images/cook.png" alt="" className="" />
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="dark"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-container">
-              <div className="menu-card">
-                <img src="/images/cook.png" alt="" className="" />
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="dark"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-container">
-              <div className="menu-card">
-                <img src="/images/cook.png" alt="" className="" />
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="dark"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-container">
-              <div className="menu-card">
-                <img src="/images/cook.png" alt="" className="" />
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="dark"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-container">
-              <div className="menu-card">
-                <img src="/images/cook.png" alt="" className="" />
-                <p className="name">FOOD NAME</p>
-                <p className="ingredients">dish ingredients</p>
-                <p className="price">25,000₮</p>
-                <ComButton
-                  label="Сагсанд нэмэх"
-                  variant="dark"
-                  leftIcon={<IconGardenCart color="#FFFFFF" />}
-                />
-              </div>
-            </div>
-          </SwiperSlide>
+          {menuList.length > 0 ? (
+            menuList.map((item: setProductType) => (
+              <SwiperSlide key={`item-${item.seq}`}>
+                <div className="card-container">
+                  <div className="menu-card">
+                    <img src={`${baseUrl}/common/download/${item.file}`} alt="" className="" />
+                    <p className="name">{item.name}</p>
+                    <p className="ingredients">dish ingredients</p>
+                    <p className="price">{item.price.toLocaleString()}₮</p>
+                    <ComButton
+                      label="Сагсанд нэмэх"
+                      variant="dark"
+                      leftIcon={<IconGardenCart color="#FFFFFF" />}
+                    />
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))
+          ) : (
+            <div className="menu-swiper-empty">hello</div>
+          )}
         </Swiper>
       </div>
     </section>
