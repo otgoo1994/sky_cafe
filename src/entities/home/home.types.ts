@@ -18,7 +18,7 @@ export type setProductType = {
   name: string;
   price: number;
   file: number;
-  categoryId: number;
+  category_id: number;
   ingredients: string;
   description: string;
   items: itemProductType[];

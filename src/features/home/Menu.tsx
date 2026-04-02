@@ -53,8 +53,9 @@ export const Menu = () => {
     if (producSettList && producSettList.data) {
       console.log(producSettList);
       const items = producSettList.data.filter(
-        (item: setProductType) => item.categoryId === active,
+        (item: setProductType) => item.category_id === active,
       );
+
       setMenuList(items);
     }
   }, [producSettList, active]);

@@ -714,6 +714,15 @@ section.section {
     background-color: colors.$bg-blue;
   }
 
+  .swiperRef {
+    height: 100%;
+
+    @include utils.mobile {
+      height: auto;
+      @include utils.vw-convert-mobile(padding, 100px 0);
+    }
+  }
+
   .food-grid {
     display: none;
     @include utils.mobile {
@@ -749,10 +758,6 @@ section.section {
     padding-left: 10%;
     padding-right: 5%;
 
-    @include utils.mobile {
-      display: none;
-    }
-
     .swiper-slide {
       width: 23%;
       align-items: center;
@@ -764,10 +769,17 @@ section.section {
 
       &.slide-up {
         transform: translateY(-5%);
+
+        @include utils.mobile {
+          transform: translateY(0);
+        }
       }
 
       &.slide-down {
         transform: translateY(5%);
+        @include utils.mobile {
+          transform: translateY(0);
+        }
       }
 
       .img-wrapper {
@@ -775,6 +787,10 @@ section.section {
         position: relative;
         overflow: hidden;
         @include utils.vw-convert-desktop(border-radius, 8px);
+
+        @include utils.mobile {
+          @include utils.vw-convert-mobile(border-radius, 25px);
+        }
 
         &:hover {
           .shadow {
@@ -807,6 +823,10 @@ section.section {
           height: 100%;
           z-index: 1;
           display: none;
+
+          @include utils.mobile {
+            display: block;
+          }
         }
 
         .overlay {
@@ -821,6 +841,10 @@ section.section {
           align-items: center;
           z-index: 2;
 
+          @include utils.mobile {
+            display: flex;
+          }
+
           &-border {
             display: flex;
             flex-direction: column;
@@ -832,6 +856,11 @@ section.section {
             border: 2px solid colors.$orange;
             @include utils.vw-convert-desktop(padding, 0 12px);
             @include utils.vw-convert-desktop(border-radius, 5px);
+
+            @include utils.mobile {
+              @include utils.vw-convert-mobile(padding, 0 30px);
+              @include utils.vw-convert-mobile(border-radius, 20px);
+            }
 
             &-title {
               font-weight: 700;

@@ -76,18 +76,10 @@ export const Gallery = () => {
   }, []);
 
   return (
-    <section className="section gallery h-full" ref={cardRef}>
+    <section className="section gallery" ref={cardRef}>
       <img src="/images/gallery_bg.png" alt="" className="background-image only-desktop" />
-      <div className="food-grid" ref={flexRef}>
-        {images.map((item, i) => (
-          <div className={`item ${i == 0 && 'item1'} ${i == 2 && 'tall'}`} key={`flex-item-${i}`}>
-            <img src={item.src} />
-          </div>
-        ))}
-      </div>
-
       {branches && branches.data && (
-        <div ref={swiperRef} style={{ height: '100%' }}>
+        <div ref={swiperRef} className="swiperRef">
           <Swiper
             slidesPerView="auto"
             breakpoints={{
