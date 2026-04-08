@@ -9,6 +9,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { HomeQuery, itemProductType, setProductType, categoryType } from '~/entities/home';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { useLocation } from "react-router-dom";
 
 export const Menu = () => {
   const [active, setActive] = useState<number>(1);
@@ -19,9 +20,19 @@ export const Menu = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [menuList, setMenuList] = useState<setProductType[]>([]);
+  const location = useLocation();
 
   const { data: producSettList } = useSuspenseQuery(HomeQuery.getSetProductList());
   const { data: categoryList } = useSuspenseQuery(HomeQuery.getCategoryList());
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -75,7 +86,7 @@ export const Menu = () => {
   };
 
   return (
-    <section className="section menu" ref={cardRef}>
+    <section className="section menu" ref={cardRef} id='menu'>
       <img src="/images/menu_bg.png" alt="" className="background-image" />
       <div className="dimmed" />
 

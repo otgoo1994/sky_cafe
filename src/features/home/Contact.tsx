@@ -15,8 +15,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { HomeQuery, branchType } from '~/entities/home';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { useLocation } from "react-router-dom";
 
 export const Contact = () => {
+  const location = useLocation();
   const cardRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLDivElement | null>(null);
@@ -45,8 +47,17 @@ export const Contact = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   return (
-    <section className="section contact" ref={cardRef}>
+    <section className="section contact" ref={cardRef} id="contact">
       <img src="/images/sky.png" alt="" className="background-image" />
       <div className="dimmed" />
 

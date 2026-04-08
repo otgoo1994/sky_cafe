@@ -3,11 +3,22 @@ import { useEffect, useState, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLocation } from "react-router-dom";
 
 export const About = () => {
   const cardRef = useRef<HTMLElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -26,7 +37,7 @@ export const About = () => {
   }, []);
 
   return (
-    <section className="section only-desktop" ref={cardRef}>
+    <section className="section only-desktop" ref={cardRef} id='about'>
       <img src="/images/bg_flower.png" alt="" className="background-image" />
       <div className="container about">
         <div className="text" ref={textRef}>

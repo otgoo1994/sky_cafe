@@ -1,5 +1,6 @@
 import { ComButton } from '~/shared/ui/';
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 import {
   IconGardenCart,
   IconChevronDown,
@@ -42,19 +43,19 @@ export const Header = () => {
           <div className="header-body-content menu-desktop">
             <ul>
               <li>
-                <p>НҮҮР</p>
+                <Link to="/#home"><p>НҮҮР</p></Link>
               </li>
               <li>
-                <p>БИДНИЙ ТУХАЙ</p>
+                <Link to="/#about"><p>БИДНИЙ ТУХАЙ</p></Link>
               </li>
               <li>
-                <p>МЕНЮ</p>
+                <Link to="/#menu"><p>МЕНЮ</p></Link>
               </li>
               <li>
-                <p>САЛБАРУУД</p>
+                <Link to="/#branches"><p>САЛБАРУУД</p></Link>
               </li>
               <li>
-                <p>ХОЛБОО БАРИХ</p>
+                <Link to="/#contact"><p>ХОЛБОО БАРИХ</p></Link>
               </li>
             </ul>
           </div>
@@ -78,21 +79,21 @@ export const Header = () => {
 
         <div className="mobile-menu-list">
           <ul>
-            <li>
-              <p>НҮҮР</p>
-            </li>
-            <li>
-              <p>БИДНИЙ ТУХАЙ</p>
-            </li>
-            <li>
-              <p>МЕНЮ</p>
-            </li>
-            <li>
-              <p>САЛБАРУУД</p>
-            </li>
-            <li>
-              <p>ХОЛБОО БАРИХ</p>
-            </li>
+             <li>
+                <Link to="/#home" onClick={() => setIsOpen(null)}><p>НҮҮР</p></Link>
+              </li>
+              <li>
+                <Link to="/#mob-about" onClick={() => setIsOpen(null)}><p>БИДНИЙ ТУХАЙ</p></Link>
+              </li>
+              <li>
+                <Link to="/#menu" onClick={() => setIsOpen(null)}><p>МЕНЮ</p></Link>
+              </li>
+              <li>
+                <Link to="/#branches" onClick={() => setIsOpen(null)}><p>САЛБАРУУД</p></Link>
+              </li>
+              <li>
+                <Link to="/#contact" onClick={() => setIsOpen(null)}><p>ХОЛБОО БАРИХ</p></Link>
+              </li>
           </ul>
         </div>
       </div>

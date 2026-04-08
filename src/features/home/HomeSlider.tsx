@@ -14,14 +14,23 @@ import Arrow from '../../../public/images/arrow.svg?react';
 import { gsap } from 'gsap';
 import { HomeQuery, bannerType } from '~/entities/home';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { useLocation } from "react-router-dom";
 
 export const HomeSlider = () => {
+  const location = useLocation();
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const swiperRef = useRef<SwiperType | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const { data: banners } = useSuspenseQuery(HomeQuery.getBanners());
 
-  console.log(banners);
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     // gsap.registerPlugin(ScrollTrigger);
@@ -85,7 +94,7 @@ export const HomeSlider = () => {
   };
 
   return (
-    <section className="section home-slider h-full">
+    <section className="section home-slider h-full" id="home">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
@@ -118,7 +127,7 @@ export const HomeSlider = () => {
                 <div className="text">
                   <div className="sub-title">
                     <div className="line" /> НИСЛЭГИЙН АМТ{' '}
-                    <img src="/images/ob_icon.png" alt="icon" className="icon" />
+                    <img src={banner.theme === 'light' ? '/images/ob_icon_blue.png' : '/images/ob_icon.png'} alt="icon" className="icon" />
                   </div>
                   <div className="title">{banner.title}</div>
                   <p className="description">{banner.description}</p>

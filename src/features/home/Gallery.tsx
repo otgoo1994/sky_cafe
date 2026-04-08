@@ -7,56 +7,24 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { HomeQuery, branchType } from '~/entities/home';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { useLocation } from "react-router-dom";
 
 export const Gallery = () => {
+  const location = useLocation();
   const cardRef = useRef<HTMLElement | null>(null);
   const swiperRef = useRef<HTMLDivElement | null>(null);
   const flexRef = useRef<HTMLDivElement | null>(null);
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const { data: branches } = useSuspenseQuery(HomeQuery.getBranchList());
 
-  const images = [
-    {
-      src: '/images/gallery_2.png',
-      title: 'Салбар 1',
-      name: 'Буян-Ухаа салбар',
-      address: 'УБ, Буянт-Ухаа нисэх буудлын баруун талд "Mongolian Airways" оффисийн 1 давхарт',
-      days: 'да-ба',
-      time: '08:00-18:00',
-      phone: '7777-1224',
-      link: 'https://maps.app.goo.gl/65fC6cknfYuX31WF9',
-    },
-    {
-      src: '/images/gallery_3.png',
-      title: 'Салбар 2',
-      name: '1-р эмнэлэг салбар зүүн',
-      address: 'УБ, Улсын 1-р эмнэлэгийн 2 давхарын зүүн жигүүрт "Үлэмж зоог"-т байрлаж байна',
-      days: 'да-ба',
-      time: '08:00-18:00',
-      phone: '7777-1224',
-      link: 'https://maps.app.goo.gl/WrYAcd43X7bShHx88',
-    },
-    {
-      src: '/images/gallery_4.png',
-      title: 'Салбар 3',
-      name: '1-р эмнэлэг салбар баруун',
-      address: 'УБ, Улсын 1-р эмнэлэгийн 2 давхарын баруун жигүүрт',
-      days: 'да-ба',
-      time: '08:00-18:00',
-      phone: '7777-1224',
-      link: 'https://maps.app.goo.gl/j1kcna2PCjEhP4bX7',
-    },
-    {
-      src: '/images/gallery_2.png',
-      title: 'Салбар 4',
-      name: '3-р эмнэлэг салбар',
-      address: 'УБ, Улсын 3-р эмнэлэгийн 1 давхарын баруун урд жигүүрт',
-      days: 'да-ба',
-      time: '08:00-18:00',
-      phone: '7777-1224',
-      link: 'https://maps.app.goo.gl/jvBMcg3zw5ka5ctw6',
-    },
-  ];
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -76,7 +44,7 @@ export const Gallery = () => {
   }, []);
 
   return (
-    <section className="section gallery" ref={cardRef}>
+    <section className="section gallery" ref={cardRef} id="branches">
       <img src="/images/gallery_bg.png" alt="" className="background-image only-desktop" />
       {branches && branches.data && (
         <div ref={swiperRef} className="swiperRef">
