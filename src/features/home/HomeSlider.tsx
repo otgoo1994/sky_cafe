@@ -71,7 +71,7 @@ export const HomeSlider = () => {
         const header = document.querySelectorAll('.header .header-body-content svg');
         header.forEach((element) => {
           if (element) {
-            if (theme === 'light') {
+            if (theme === 'blue') {
               element.classList.add('light');
               element.classList.remove('dark');
             } else {
@@ -110,7 +110,7 @@ export const HomeSlider = () => {
         {banners &&
           banners.data &&
           banners.data.map((banner: bannerType, index: number) => (
-            <SwiperSlide data-theme="light" key={`main-banner-${index}`}>
+            <SwiperSlide data-theme={banner.theme} key={`main-banner-${index}`}>
               <img
                 src={banner.theme === 'light' ? '/images/bg_2.png' : '/images/bg_blue.png'}
                 alt=""
