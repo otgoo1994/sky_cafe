@@ -119,7 +119,7 @@ export const HomeSlider = () => {
               <div className={`grid col-2 slider-content ${banner.theme === 'light' && 'light'}`}>
                 <div className="image mobile">
                   <div className="mobile-container">
-                    <img src="/images/OB.png" alt="icon" />
+                    <img src={`${baseUrl}/common/download/${banner.file}`} alt="icon" />
                     <p className="image-title top">Нислэгийн амтыг таны гарт</p>
                     <p className="image-title bottom">Нисэх мэт шуурхай хүргэлт</p>
                   </div>
@@ -146,60 +146,6 @@ export const HomeSlider = () => {
               </div>
             </SwiperSlide>
           ))}
-        {/* <SwiperSlide data-theme="dark">
-          <img src="/images/bg_2.png" alt="" className="background-image" />
-          <div className="grid col-2 slider-content light">
-            <div className="image mobile">
-              <div className="mobile-container">
-                <img src="/images/set_b.png" alt="icon" />
-              </div>
-            </div>
-            <div className="text">
-              <div className="sub-title">
-                <div className="line" /> НИСЛЭГИЙН АМТ{' '}
-                <img src="/images/ob_icon.png" alt="icon" className="icon" />
-              </div>
-              <div className="title">sky café</div>
-              <p className="description">
-                Тэнгэрт мэт мэдрэмжийг таны ширээн дээр буулган амт, чанар, тав тухыг төгс
-                хослуулсан орчноор дамжуулж бид таны өдөр тутмын мөчийг илүү үнэ цэнтэй болгоно
-              </p>
-              <div className="button-container">
-                <ComButton label="Салбарууд" variant="warning" rightIcon={<IconChevronRight />} />
-              </div>
-            </div>
-            <div className="image">
-              <img src="/images/set_b.png" alt="icon" />
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide data-theme="dark">
-          <img src="/images/bg_2.png" alt="" className="background-image" />
-          <div className="grid col-2 slider-content light">
-            <div className="image mobile">
-              <div className="mobile-container">
-                <img src="/images/set_a.png" alt="icon" />
-              </div>
-            </div>
-            <div className="text">
-              <div className="sub-title">
-                <div className="line" /> НИСЛЭГИЙН АМТ{' '}
-                <img src="/images/ob_icon.png" alt="icon" className="icon" />
-              </div>
-              <div className="title">sky café</div>
-              <p className="description">
-                Тэнгэрт мэт мэдрэмжийг таны ширээн дээр буулган амт, чанар, тав тухыг төгс
-                хослуулсан орчноор дамжуулж бид таны өдөр тутмын мөчийг илүү үнэ цэнтэй болгоно
-              </p>
-              <div className="button-container">
-                <ComButton label="Салбарууд" variant="warning" rightIcon={<IconChevronRight />} />
-              </div>
-            </div>
-            <div className="image">
-              <img src="/images/set_a.png" alt="icon" />
-            </div>
-          </div>
-        </SwiperSlide> */}
       </Swiper>
       <div
         className={`custom-prev ${currentIndex === 0 ? 'primary' : 'warning'}`}
