@@ -14,7 +14,7 @@ import Arrow from '../../../public/images/arrow.svg?react';
 import { gsap } from 'gsap';
 import { HomeQuery, bannerType } from '~/entities/home';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 export const HomeSlider = () => {
   const location = useLocation();
@@ -27,7 +27,7 @@ export const HomeSlider = () => {
     if (location.hash) {
       const el = document.querySelector(location.hash);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        el.scrollIntoView({ behavior: 'smooth' });
       }
     }
   }, [location]);
@@ -120,14 +120,26 @@ export const HomeSlider = () => {
                 <div className="image mobile">
                   <div className="mobile-container">
                     <img src={`${baseUrl}/common/download/${banner.file}`} alt="icon" />
-                    <p className="image-title top">Нислэгийн амтыг таны гарт</p>
-                    <p className="image-title bottom">Нисэх мэт шуурхай хүргэлт</p>
+                    {index === 0 && (
+                      <>
+                        <p className="image-title top">Нислэгийн амтыг таны гарт</p>
+                        <p className="image-title bottom">Нисэх мэт шуурхай хүргэлт</p>
+                      </>
+                    )}
                   </div>
                 </div>
                 <div className="text">
                   <div className="sub-title">
                     <div className="line" /> НИСЛЭГИЙН АМТ{' '}
-                    <img src={banner.theme === 'light' ? '/images/ob_icon_blue.png' : '/images/ob_icon.png'} alt="icon" className="icon" />
+                    <img
+                      src={
+                        banner.theme === 'light'
+                          ? '/images/ob_icon_blue.png'
+                          : '/images/ob_icon.png'
+                      }
+                      alt="icon"
+                      className="icon"
+                    />
                   </div>
                   <div className="title">{banner.title}</div>
                   <p className="description">{banner.description}</p>
